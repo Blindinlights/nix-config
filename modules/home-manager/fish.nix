@@ -4,7 +4,7 @@
 {
   programs.fish = {
     enable = true;
-    generateCompletions = true
+    generateCompletions = true;
     shellAbbrs = {
       # 文件列表
       l = "lsd -l";
