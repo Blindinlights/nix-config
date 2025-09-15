@@ -5,7 +5,7 @@
   imports=[
     ../desktop.nix
     ../fonts.nix
-  ]
+  ];
   home.packages = with pkgs; [
     kdePackages.dolphin
     swaylock
