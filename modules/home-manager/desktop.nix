@@ -4,6 +4,8 @@
 {
 
   home.packages = with pkgs; [
+    btop
+    killall
     qq
     flclash
     wezterm

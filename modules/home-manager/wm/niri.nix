@@ -11,7 +11,8 @@
     swaylock
     mako
     anyrun
-
+    exfatprogs # 用于 exFAT, 大多数 U 盘和 SD 卡的格式
+    ntfs3g     #
     bibata-cursors
   ];
 
