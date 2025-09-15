@@ -15,13 +15,12 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" ];
   };
-  programs.waybar.enable = true;
-  programs.fish.enable = true;
   programs.niri.enable = true;
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.blindinlights = import ./home.nix;
   home-manager.backupFileExtension = "hm-bak";
-  # 系统状态版本，非常重要！
+
   system.stateVersion = "25.05";
 }

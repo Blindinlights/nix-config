@@ -13,6 +13,7 @@
 
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = false;
+  programs.fish.enable = true;
 
   time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_US.UTF-8";
