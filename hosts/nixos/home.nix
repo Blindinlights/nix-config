@@ -1,4 +1,3 @@
-# hosts/nixos/home.nix
 { pkgs, ... }:
 
 {
@@ -7,6 +6,7 @@
     ../../modules/home-manager/fish.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/wm/niri.nix
+    ../../modules/home-manager/development/development.nix
 
   ];
   home.username = "blindinlights";

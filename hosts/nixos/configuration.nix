@@ -1,11 +1,10 @@
-# hosts/nixos/configuration.nix
 { config, pkgs, inputs, ... }:
 
 {
   # 导入此主机所需的模块
   imports = [
-    ./hardware-configuration.nix # 硬件配置 [cite: 4]
-    ../../modules/nixos/base.nix  # 导入我们创建的系统基础模块
+    ./hardware-configuration.nix
+    ../../modules/nixos/base.nix
   ];
 
   networking.hostName = "nixos";
