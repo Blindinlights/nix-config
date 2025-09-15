@@ -16,7 +16,7 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
   programs.waybar.enable = true;
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
   programs.niri.enable = true;
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

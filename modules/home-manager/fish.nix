@@ -6,16 +6,15 @@
     enable = true;
 
     # 简单的欢迎语，对应 function fish_greeting
-    greeting = "";
 
     # 环境变量，对应 set -gx
-    environment = {
-      DEBUGINFOD_URLS = "https://debuginfod.archlinux.org";
-      EDITOR = "${pkgs.helix}/bin/hx"; # 使用 Nix 包路径确保正确
-      # MANPAGER = "bat -l man"; # 如果需要可以取消注释
-      PNPM_HOME = "$HOME/.local/share/pnpm";
-      BUN_INSTALL = "$HOME/.bun";
-    };
+    # environment = {
+    #   DEBUGINFOD_URLS = "https://debuginfod.archlinux.org";
+    #   EDITOR = "${pkgs.helix}/bin/hx"; # 使用 Nix 包路径确保正确
+    #   # MANPAGER = "bat -l man"; # 如果需要可以取消注释
+    #   PNPM_HOME = "$HOME/.local/share/pnpm";
+    #   BUN_INSTALL = "$HOME/.bun";
+    # };
 
     # 别名，对应 alias
     shellAbbrs = {
@@ -102,13 +101,13 @@
     # 修改 PATH 变量
     # Home Manager 会自动将 home.packages 中的包装入 PATH
     # 这里只添加额外的、非 Nix 管理的路径
-    extraPath = [
-      "$HOME/.local/bin"
-      "/home/blindinlights/.lmstudio/bin"
-    ];
+    # extraPath = [
+    #   "$HOME/.local/bin"
+    #   "/home/blindinlights/.lmstudio/bin"
+    # ];
   };
 
   # 如果 ls 命令也想用 lsd, 可以这样设置
-  programs.lsd.enable = true;
-  programs.lsd.aliases.ls = "lsd";
+  # programs.lsd.enable = true;
+  # programs.lsd.aliases.ls = "lsd";
 }
