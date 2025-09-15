@@ -44,6 +44,5 @@
   };
 
   programs.waybar.enable = true;
-  programs.niri.enable = true;
   programs.fish.enable = true;
 }

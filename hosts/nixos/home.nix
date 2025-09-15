@@ -5,6 +5,7 @@
   # 导入通用的 home-manager 模块
   imports = [
     ../../modules/home-manager/common.nix
+    ../../modules/home-manager/fish.nix
   ];
 
   # 设置用户名和家目录
