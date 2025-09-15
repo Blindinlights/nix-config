@@ -1,10 +1,14 @@
 # ~/my-nix-config/modules/home-manager/desktop.nix
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
-  imports=[
+  imports = [
     ../desktop.nix
     ../fonts.nix
+    ./anyrun.nix
   ];
   home.packages = with pkgs; [
     kdePackages.dolphin
@@ -12,7 +16,7 @@
     mako
     anyrun
     exfatprogs # 用于 exFAT, 大多数 U 盘和 SD 卡的格式
-    ntfs3g     #
+    ntfs3g
     bibata-cursors
   ];
 

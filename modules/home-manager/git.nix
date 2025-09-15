@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.git = {
@@ -22,7 +22,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false; # 合并时默认使用 merge 而不是 rebase
-      color.ui = true;     # 开启颜色
+      color.ui = true; # 开启颜色
       # GPG 签名配置 (可选)
       # commit.gpgsign = true;
     };

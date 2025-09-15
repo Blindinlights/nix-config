@@ -1,5 +1,5 @@
 # ~/my-nix-config/modules/home-manager/fish.nix
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.fish = {

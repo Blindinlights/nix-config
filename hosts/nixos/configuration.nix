@@ -1,4 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   # 导入此主机所需的模块
@@ -12,7 +15,10 @@
   users.users.blindinlights = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
   programs.niri.enable = true;
 

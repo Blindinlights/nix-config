@@ -1,5 +1,5 @@
 # ~/my-nix-config/modules/home-manager/desktop.nix
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
