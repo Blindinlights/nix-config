@@ -4,7 +4,7 @@
 {
   programs.fish = {
     enable = true;
-    # 别名，对应 alias
+    generateCompletions = true
     shellAbbrs = {
       # 文件列表
       l = "lsd -l";
@@ -25,9 +25,7 @@
       gh = "github";
     };
 
-    # 自定义函数
     functions = {
-      # Yazi 文件管理器
       y = {
         description = "Yazi file manager";
         body = ''
@@ -40,13 +38,11 @@
         '';
       };
 
-      # 创建并进入目录
       mkcd = {
         description = "Create and change directory";
         body = "mkdir -p $argv[1] && cd $argv[1]";
       };
 
-      # Git push
       gp = {
         description = "Git push with remote branch creation";
         body = ''
@@ -55,7 +51,6 @@
         '';
       };
 
-      # 代理开关
       proxy_on = {
         description = "Enable proxy";
         body = ''
@@ -72,7 +67,6 @@
       };
     };
 
-    # 交互式 Shell 启动时执行的代码
     interactiveShellInit = ''
       # 默认开启代理
       proxy_on
