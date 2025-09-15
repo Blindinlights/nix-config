@@ -14,6 +14,7 @@
     kdePackages.dolphin
     swaylock
     mako
+    swww
     exfatprogs
     ntfs3g
     bibata-cursors

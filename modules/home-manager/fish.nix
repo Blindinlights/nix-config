@@ -37,6 +37,10 @@
           rm -f -- "$tmp"
         '';
       };
+      fish_greeting = {
+        description = "fish greeting";
+        body = "";
+      };
 
       mkcd = {
         description = "Create and change directory";
