@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../modules/home-manager/common.nix
@@ -11,4 +11,7 @@
   home.username = "blindinlights";
   home.homeDirectory = "/home/blindinlights";
   home.stateVersion = "25.05";
+  home.packages = with pkgs; [
+    lmstudio
+  ];
 }
