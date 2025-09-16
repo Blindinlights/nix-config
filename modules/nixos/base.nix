@@ -1,8 +1,5 @@
 # modules/nixos/base.nix
 {
-  config,
-  lib,
-  pkgs,
   ...
 }:
 
@@ -13,7 +10,6 @@
     "flakes"
   ];
 
-  # 引导加载程序
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
