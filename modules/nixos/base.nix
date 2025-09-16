@@ -18,7 +18,6 @@
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
-  services.udisks2.enable = true;
 
   time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -27,18 +26,6 @@
     "en_US.UTF-8/UTF-8"
   ];
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  services.libinput.enable = true;
-
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
   services.openssh.enable = true;
 
   nix.settings.substituters = [ "https://mirrors.ustc.edu.cn/nix-channels/store" ];

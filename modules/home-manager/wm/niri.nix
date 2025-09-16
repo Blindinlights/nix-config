@@ -29,6 +29,4 @@
     x11.enable = true;
   };
   programs.waybar.enable = true;
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 }
