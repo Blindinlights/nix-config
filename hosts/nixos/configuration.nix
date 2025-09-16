@@ -28,5 +28,7 @@
   home-manager.users.blindinlights = import ./home.nix;
   home-manager.backupFileExtension = "hm-bak";
 
+  programs.nix-ld.enable = true;
+
   system.stateVersion = "25.05";
 }
