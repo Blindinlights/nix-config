@@ -5,7 +5,7 @@
     ../../modules/home-manager/fish.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/wm/niri.nix
-    ../../modules/home-manager/development/development.nix
+    ../../modules/home-manager/dev/development.nix
 
   ];
   home.username = "blindinlights";
