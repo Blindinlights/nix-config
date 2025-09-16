@@ -13,6 +13,8 @@
   home.packages = with pkgs; [
     kdePackages.dolphin
     swaylock
+    blueman
+    swayidle
     mako
     swww
     exfatprogs
