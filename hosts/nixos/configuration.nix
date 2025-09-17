@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/base.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/nvidia.nix
   ];
 
   networking.hostName = "nixos";
