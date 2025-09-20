@@ -19,6 +19,9 @@
     exfatprogs
     ntfs3g
     bibata-cursors
+
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
   ];
 
   home.pointerCursor = {
