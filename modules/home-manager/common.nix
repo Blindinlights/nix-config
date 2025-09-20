@@ -11,6 +11,11 @@
     dust
     helix
     zellij
+    direnv
+    nix-direnv
+    ast-grep
+    just
+    fzf
   ];
 
 }

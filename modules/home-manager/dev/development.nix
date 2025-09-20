@@ -7,6 +7,8 @@
     ./python.nix
     ./ai.nix
     ./js.nix
+    ./rust.nix
+    ./cpp.nix
   ];
 
 }
