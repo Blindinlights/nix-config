@@ -12,6 +12,7 @@
   home.homeDirectory = "/home/blindinlights";
   home.stateVersion = "25.05";
   home.packages = with pkgs; [
+    xdg-desktop-portal-gtk
     lmstudio
     sniffnet
     kdePackages.okular
