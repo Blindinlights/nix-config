@@ -15,5 +15,6 @@
     lmstudio
     sniffnet
     kdePackages.okular
+    thunderbird
   ];
 }
