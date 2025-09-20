@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/base.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/steam.nix
   ];
 
   networking.hostName = "nixos";
