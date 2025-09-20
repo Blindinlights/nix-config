@@ -20,8 +20,6 @@
     ntfs3g
     bibata-cursors
 
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
   ];
 
   home.pointerCursor = {
@@ -32,4 +30,11 @@
     x11.enable = true;
   };
   programs.waybar.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+  };
 }
