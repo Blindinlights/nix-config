@@ -20,7 +20,7 @@
     exfatprogs
     ntfs3g
     bibata-cursors
-
+    xwayland-satellite
   ];
 
   home.pointerCursor = {
