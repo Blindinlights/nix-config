@@ -13,10 +13,6 @@
     # ../../modules/nixos/nvidia.nix
   ];
 
-  nixpkgs.overlays = [
-
-  ];
-
   networking.hostName = "nixos";
 
   users.users.blindinlights = {
@@ -27,6 +23,22 @@
       "networkmanager"
     ];
   };
+
+  fileSystems = {
+    "/data" = {
+      device = "/dev/disk/by-uuid/29239a17-d46b-4317-b36a-70c003fef68e";
+      fsType = "btrfs";
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
+    };
+  };
+  systemd.tmpfiles.rules = [
+    "d /data 0755 root root -"
+    "d /data/blindinlights 0755 blindinlights users -"
+  ];
+
   programs.niri.enable = true;
 
   home-manager.useGlobalPkgs = true;
