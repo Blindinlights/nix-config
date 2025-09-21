@@ -9,6 +9,8 @@
     ../../modules/nixos/base.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/rust.nix
+
   ];
 
   networking.hostName = "nixos";

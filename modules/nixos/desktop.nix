@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 {
 
   services.pipewire = {
@@ -23,5 +23,8 @@
     HTTPS_PROXY = "http://localhost:7890";
     NO_PROXY = "localhost,127.0.0.1";
   };
+  environment.systemPackages = [
+    inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
+  ];
 
 }

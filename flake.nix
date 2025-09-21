@@ -11,6 +11,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,17 +33,6 @@
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                environment.systemPackages = [
-                  (pkgs.rust-bin.stable.latest.default.override {
-                    extensions = [ "rust-src" ];
-                  })
-                ];
-              }
-            )
           ];
         };
       };
