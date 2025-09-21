@@ -18,6 +18,8 @@
     fzf
   ];
 
-  xdg.userDirs.enable = true;
-
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
 }

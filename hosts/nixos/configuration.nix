@@ -41,6 +41,7 @@
   systemd.tmpfiles.rules = [
     "d /data 0755 root root -"
     "d /data/blindinlights 0755 blindinlights users -"
+    "d /data/blindinlights/Data 0755 blindinlights users -"
   ];
 
   programs.niri.enable = true;
