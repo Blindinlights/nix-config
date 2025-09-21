@@ -24,15 +24,19 @@
     ];
   };
 
-  fileSystems = {
-    "/data" = {
-      device = "/dev/disk/by-uuid/29239a17-d46b-4317-b36a-70c003fef68e";
-      fsType = "btrfs";
-      options = [
-        "compress=zstd"
-        "noatime"
-      ];
-    };
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/29239a17-d46b-4317-b36a-70c003fef68e";
+    fsType = "btrfs";
+    options = [
+      "compress=zstd"
+      "noatime"
+    ];
+  };
+  fileSystems."/home/blindinlights/Data" = {
+    device = "/data/blindinlights/Data";
+    fsType = "none";
+    options = [ "bind" ];
+    neededForBoot = false;
   };
   systemd.tmpfiles.rules = [
     "d /data 0755 root root -"

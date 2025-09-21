@@ -18,4 +18,6 @@
     fzf
   ];
 
+  xdg.userDirs.enable = true;
+
 }
