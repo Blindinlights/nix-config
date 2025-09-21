@@ -10,6 +10,10 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/rust.nix
+    # ../../modules/nixos/nvidia.nix
+  ];
+
+  nixpkgs.overlays = [
 
   ];
 
