@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./zellij.nix
+    ./helix.nix
+  ];
+
   home.packages = with pkgs; [
     tree
     yazi
@@ -9,10 +14,7 @@
     ripgrep
     bat
     dust
-    helix
-    zellij
     direnv
-    nix-direnv
     ast-grep
     just
     fzf
