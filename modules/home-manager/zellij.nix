@@ -5,13 +5,13 @@
     enableFishIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
-      default_layout = "compact";
-      simplified_ui = true;
+      # default_layout = "compact";
+      # simplified_ui = true;
       show_startup_tips = false;
-      keybinds = {
-        unbind = [ "Ctrl s" ];
+      # keybinds = {
+      #   # unbind = [ "Ctrl s" ];
 
-      };
+      # };
 
     };
   };

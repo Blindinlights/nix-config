@@ -4,6 +4,7 @@
   imports = [
     ./zellij.nix
     ./helix.nix
+    ./atuin.nix
   ];
 
   home.packages = with pkgs; [
