@@ -87,7 +87,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "wezterm"; }
-    Mod+E { spawn "anyrun"; }
+    Mod+E { spawn "fuzzel"; }
     Mod+Z { spawn "firefox-nightly"; }
     Super+Alt+L { spawn "swaylock"; }
 

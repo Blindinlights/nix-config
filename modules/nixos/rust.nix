@@ -1,6 +1,5 @@
 # modules/nixos/rust.nix
 {
-  config,
   pkgs,
   inputs,
   ...

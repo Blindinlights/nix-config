@@ -8,8 +8,10 @@
   imports = [
     ./desktop.nix
     ./fonts.nix
-    ./anyrun.nix
+    # ./anyrun.nix
     ./waybar.nix
+    ./mako.nix
+    ./fuzzel.nix
   ];
   home.packages = with pkgs; [
     kdePackages.dolphin
