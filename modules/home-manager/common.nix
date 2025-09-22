@@ -16,6 +16,7 @@
     ast-grep
     just
     fzf
+    killall
   ];
 
   xdg.userDirs = {

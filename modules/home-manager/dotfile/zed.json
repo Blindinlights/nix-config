@@ -1,0 +1,25 @@
+{
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "ui_font_size": 18,
+  "buffer_font_size": 20,
+  "buffer_font_family": "Source Code Pro",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato - No Italics",
+    "dark": "One Dark"
+  },
+  "languages": {
+    "Nix": {
+      "language_servers": ["nil", "nixd"]
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "ignore_system_version": false
+      }
+    }
+  }
+}

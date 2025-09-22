@@ -17,6 +17,5 @@
     sniffnet
     kdePackages.okular
     thunderbird
-    google-chrome
   ];
 }

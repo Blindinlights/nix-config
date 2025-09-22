@@ -2,14 +2,14 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./wezterm.nix
+  ];
 
   home.packages = with pkgs; [
     btop
-    killall
     qq
     flclash
-    wezterm
-    zed-editor
   ];
 
   programs.firefox.enable = true;
@@ -17,6 +17,7 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
+    waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       fcitx5-chinese-addons
       fcitx5-configtool
