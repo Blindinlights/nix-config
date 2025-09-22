@@ -6,8 +6,8 @@
 
 {
   imports = [
-    ../desktop.nix
-    ../fonts.nix
+    ./desktop.nix
+    ./fonts.nix
     ./anyrun.nix
   ];
   home.packages = with pkgs; [
