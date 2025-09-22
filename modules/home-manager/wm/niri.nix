@@ -32,6 +32,6 @@
   };
   programs.waybar.enable = true;
   home.file.".config/niri/config.kdl" = {
-    source = ./dotfiles/niri.kdl;
+    source = ../dotfiles/niri.kdl;
   };
 }
