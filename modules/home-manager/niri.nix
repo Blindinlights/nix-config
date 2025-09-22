@@ -9,6 +9,7 @@
     ./desktop.nix
     ./fonts.nix
     ./anyrun.nix
+    ./waybar.nix
   ];
   home.packages = with pkgs; [
     kdePackages.dolphin
@@ -30,7 +31,6 @@
     gtk.enable = true;
     x11.enable = true;
   };
-  programs.waybar.enable = true;
   home.file.".config/niri/config.kdl" = {
     source = ./dotfiles/niri.kdl;
   };
