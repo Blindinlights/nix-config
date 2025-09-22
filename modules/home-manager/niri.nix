@@ -31,7 +31,9 @@
     gtk.enable = true;
     x11.enable = true;
   };
+  services.swww.enable = true;
   home.file.".config/niri/config.kdl" = {
     source = ./dotfiles/niri.kdl;
   };
+
 }

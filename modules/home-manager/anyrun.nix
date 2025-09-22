@@ -7,7 +7,7 @@
         fraction = 0.5;
       };
       y = {
-        fraction = 0.3;
+        fraction = 0.1;
       };
       width = {
         fraction = 0.3;
@@ -26,8 +26,6 @@
       ];
     };
 
-    # Inline comments are supported for language injection into
-    # multi-line strings with Treesitter! (Depends on your editor)
     extraCss = # css
       ''
         .some_class {

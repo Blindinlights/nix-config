@@ -5,12 +5,9 @@
   # 启用 Waybar
   programs.waybar = {
     enable = true;
-
-    # 将 JSON 配置转换为 Nix attribute set
-    # 'mainbar' 是您状态栏的任意名称，可以修改
+    systemd.enable = true;
     settings = {
       mainbar = {
-        # --- Bar Settings ---
         layer = "top";
         position = "top";
         height = 38;
@@ -59,9 +56,7 @@
         };
 
         memory = {
-          # 建议使用这个图标 `󰍛`，它更符合内存的意象
-          # format = "󰍛 {}%";
-          format = "  {}%";
+          format = "󰍛 {}%";
           "on-click" = "foot --title btop btop";
         };
 

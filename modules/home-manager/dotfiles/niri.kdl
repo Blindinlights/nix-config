@@ -49,9 +49,7 @@ layout {
 }
 
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "waybar"
 spawn-at-startup "FlClash"
-spawn-at-startup "swww-daemon"
 environment{
     DISPLAY ":1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
