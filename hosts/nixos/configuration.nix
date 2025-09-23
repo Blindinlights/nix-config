@@ -10,7 +10,7 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/rust.nix
-    # ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/nvidia.nix
   ];
 
   networking.hostName = "nixos";

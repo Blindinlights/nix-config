@@ -20,13 +20,5 @@
         anchor = "top-right";
       };
     };
-
-    # extraConfig 可以用来编写更复杂的条件样式
-    extraConfig = ''
-      [urgency=high]
-      background-color=#ed8796
-      border-color=#ed8796
-      text-color=#1e1e2e
-    '';
   };
 }
