@@ -11,6 +11,7 @@
     btop
     qq
     flclash
+    wl-clipboard
   ];
 
   programs.firefox.enable = true;

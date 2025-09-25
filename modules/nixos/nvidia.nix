@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [
@@ -14,16 +14,7 @@
     nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:6:0:0";
   };
-
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     linuxPackages = prev.linuxPackages.extend (
-  #       final: prev: {
-  #         nvidia_x11_open = prev.nvidia_x11_open.overrideAttrs {
-  #           src = /tmp/NVIDIA-Linux-x86_64-580.82.09.run;
-  #         };
-  #       }
-  #     );
-  #   })
-  # ];
+  environment.systemPackages = [
+    pkgs.cudatoolkit
+  ];
 }
