@@ -15,6 +15,9 @@
     ripgrep
     bat
     dust
+    zip
+    unzip
+
     direnv
     ast-grep
     just

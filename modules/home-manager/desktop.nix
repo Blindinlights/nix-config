@@ -5,6 +5,7 @@
   imports = [
     ./wezterm.nix
     ./zed.nix
+    ./eww.nix
   ];
 
   home.packages = with pkgs; [
@@ -12,6 +13,7 @@
     qq
     flclash
     wl-clipboard
+    vlc
   ];
 
   programs.firefox.enable = true;
