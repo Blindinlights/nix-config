@@ -4,6 +4,6 @@
     pkgs.zed-editor
   ];
   home.file.".config/zed/settings.json" = {
-    source = ./dotfiles/zed.json;
+    source = ../dotfiles/zed.json;
   };
 }

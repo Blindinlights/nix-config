@@ -1,4 +1,3 @@
-# In your home.nix or a dedicated waybar.nix file
 { ... }:
 
 {

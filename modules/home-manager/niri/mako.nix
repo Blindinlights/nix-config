@@ -7,12 +7,12 @@
     # 默认样式
     settings = {
       font = "JetBrainsMono Nerd Font 11";
-      backgroundColor = "#1e1e2eff"; # Catppuccin Macchiato Base
-      textColor = "#cdd6f4ff"; # Catppuccin Macchiato Text
-      borderColor = "#89b4faff"; # Catppuccin Macchiato Blue
+      background-color = "#1e1e2eff";
+      text-color = "#cdd6f4ff";
+      border-color = "#89b4faff";
 
-      borderSize = 2;
-      borderRadius = 8;
+      border-size = 2;
+      border-radius = 8;
       padding = "10";
       width = 320;
 

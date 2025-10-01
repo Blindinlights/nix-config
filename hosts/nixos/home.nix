@@ -2,10 +2,8 @@
 {
   imports = [
     ../../modules/home-manager/common.nix
-    ../../modules/home-manager/fish.nix
-    ../../modules/home-manager/git.nix
     ../../modules/home-manager/niri.nix
-    ../../modules/home-manager/dev/development.nix
+    ../../modules/home-manager/development.nix
 
   ];
   home.username = "blindinlights";

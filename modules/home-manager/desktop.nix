@@ -1,12 +1,12 @@
-# ~/my-nix-config/modules/home-manager/desktop.nix
-{ pkgs, ... }:
-
+{ lib,pkgs, ... }:
 {
-  imports = [
-    ./wezterm.nix
-    ./zed.nix
-    ./eww.nix
-  ];
+
+  imports =
+    lib.mapAttrsToList (name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name
+      then ./. + "/desktop/${name}"
+      else null
+    ) (builtins.readDir ./desktop);
 
   home.packages = with pkgs; [
     btop

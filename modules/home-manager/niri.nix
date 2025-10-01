@@ -1,18 +1,21 @@
-# ~/my-nix-config/modules/home-manager/desktop.nix
 {
+  lib,
   pkgs,
   ...
 }:
-
+let
+   modulesPath =./niri;
+   moduleFiles =
+    lib.mapAttrsToList (name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name
+      then  "${modulesPath}/${name}"
+      else null
+    ) (builtins.readDir modulesPath);
+in 
 {
   imports = [
     ./desktop.nix
-    ./fonts.nix
-    # ./anyrun.nix
-    ./waybar.nix
-    ./mako.nix
-    ./fuzzel.nix
-  ];
+  ]++moduleFiles;
   home.packages = with pkgs; [
     kdePackages.dolphin
     nautilus

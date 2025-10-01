@@ -1,11 +1,17 @@
-{ pkgs, ... }:
-
+{lib, pkgs, ... }:
+let
+   modulesPath =./common;
+   moduleFiles =
+    lib.mapAttrsToList (name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name
+      then  "${modulesPath}/${name}"
+      else null
+    ) (builtins.readDir modulesPath);
+in 
 {
   imports = [
-    ./zellij.nix
-    ./helix.nix
-    ./atuin.nix
-  ];
+
+  ]++moduleFiles;
 
   home.packages = with pkgs; [
     tree
@@ -18,6 +24,7 @@
     zip
     unzip
 
+    nixfmt
     direnv
     ast-grep
     just
