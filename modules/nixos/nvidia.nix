@@ -16,5 +16,8 @@
   };
   environment.systemPackages = [
     pkgs.cudatoolkit
+    pkgs.cudaPackages.cudnn
+    pkgs.cudaPackages.cuda_cudart
+    
   ];
 }

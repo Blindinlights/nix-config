@@ -18,7 +18,8 @@ in
   ]++moduleFiles;
   home.packages = with pkgs; [
     kdePackages.dolphin
-    nautilus
+    # nautilus
+    cosmic-files 
     swaylock
     swayidle
     mako

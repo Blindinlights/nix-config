@@ -24,19 +24,31 @@
           "collapse_selection"
           "keep_primary_selection"
         ];
+        d ="delete_selection_noyank";
+        "A-d"="delete_selection";
+        c= "change_selection_noyank";
+        "A-c"="change_selection";
+        "="=":fmt";
       };
       keys.insert = {
         j = {
           k = "normal_mode";
+        };
+        g ={
+          a="code_action";
         };
       };
     };
     languages = {
       language = [
         {
-          name = "nix";
+          name = "racket";
+          scope = "source.racket";
+          file-types = [ "rkt" "scrbl" "rktl" ];
+          comment-token = ";";
           formatter = {
-            command = "nixfmt";
+            command = "raco";
+            args = [ "fmt" "%{buffer_name}" ];
           };
         }
       ];
