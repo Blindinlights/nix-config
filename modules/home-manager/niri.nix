@@ -19,6 +19,9 @@ in
   home.packages = with pkgs; [
     kdePackages.dolphin
     # nautilus
+    # xdg-desktop-portal
+    # xdg-desktop-portal-cosmic
+    kdePackages.okular
     cosmic-files 
     swaylock
     swayidle
@@ -38,8 +41,18 @@ in
     x11.enable = true;
   };
   services.swww.enable = true;
+
+  xdg.portal={
+    enable = true;
+    extraPortals = [
+    pkgs.xdg-desktop-portal-cosmic
+    ];
+    config.common.default="*";
+  };
+
   home.file.".config/niri/config.kdl" = {
     source = ./dotfiles/niri.kdl;
   };
+  
 
 }

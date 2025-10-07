@@ -18,9 +18,7 @@
     r2modman
     ffmpeg
     yt-dlp
-    xdg-desktop-portal-cosmic
     sniffnet
-    kdePackages.okular
     thunderbird
   ];
 

@@ -5,7 +5,7 @@
   programs.fish = {
     enable = true;
     generateCompletions = true;
-    shellAbbrs = {
+    shellAliases  = {
       l = "lsd -l";
       la = "lsd -a";
       lla = "lsd -la";
@@ -72,10 +72,14 @@
       proxy_on
 
       eval (ssh-agent -c) >/dev/null 2>&1
-
-      # starship init fish | source
-      # atuin init fish | source
     '';
 
   };
+
+  programs.starship={
+    enable = true;
+    enableFishIntegration=true;
+
+  };
 }
+  

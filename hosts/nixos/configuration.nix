@@ -11,6 +11,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/rust.nix
     ../../modules/nixos/nvidia.nix
+    # ../../secrets/secrets.nix
   ];
 
   networking.hostName = "nixos";
