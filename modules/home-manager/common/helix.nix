@@ -16,6 +16,9 @@
         lsp = {
           display-inlay-hints = true;
         };
+        soft-wrap={
+          enable=true;
+        };
       };
       keys.normal = {
         space.space = ":w";

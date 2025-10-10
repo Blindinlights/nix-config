@@ -20,6 +20,7 @@
     yt-dlp
     sniffnet
     thunderbird
+    cherry-studio
   ];
 
   programs.firefox.enable = true;
