@@ -11,7 +11,8 @@
   home.packages = with pkgs; [
     btop
     qq
-    flclash
+    # flclash
+    clash-verge-rev
     wl-clipboard
     vlc
 
@@ -21,6 +22,7 @@
     sniffnet
     thunderbird
     cherry-studio
+    sillytavern
   ];
 
   programs.firefox.enable = true;
