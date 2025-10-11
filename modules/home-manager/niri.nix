@@ -31,7 +31,8 @@ in
     ntfs3g
     bibata-cursors
     xwayland-satellite
-  ];
+    brightnessctl
+      ];
 
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
