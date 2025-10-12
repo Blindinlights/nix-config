@@ -4,6 +4,8 @@
   ...
 }:
 let
+   dark=../../wallpapers/dark.jpeg;
+   light=../../wallpapers/light.jpeg;
    modulesPath =./niri;
    moduleFiles =
     lib.mapAttrsToList (name: value:
@@ -11,6 +13,7 @@ let
       then  "${modulesPath}/${name}"
       else null
     ) (builtins.readDir modulesPath);
+  
 in 
 {
   imports = [
@@ -47,6 +50,7 @@ in
     enable = true;
     extraPortals = [
     pkgs.xdg-desktop-portal-cosmic
+    pkgs.xdg-desktop-portal-gtk
     ];
     config.common.default="*";
   };
@@ -55,5 +59,21 @@ in
     source = ./dotfiles/niri.kdl;
   };
   
-
+  services.darkman={
+    enable=true;
+    darkModeScripts={
+        gtk-theme = ''
+          ${pkgs.dconf}/bin/dconf write \
+          /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+          '';
+        wallpaper="${pkgs.swww}/bin/swww img ${dark} ";
+    };
+    lightModeScripts ={
+        gtk-theme = ''
+          ${pkgs.dconf}/bin/dconf write \
+            /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+          '';
+        wallpaper="${pkgs.swww}/bin/swww img ${light}";
+    };
+  };
 }

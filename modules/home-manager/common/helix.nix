@@ -33,14 +33,6 @@
         "A-c"="change_selection";
         "="=":fmt";
       };
-      keys.insert = {
-        j = {
-          k = "normal_mode";
-        };
-        g ={
-          a="code_action";
-        };
-      };
     };
     languages = {
       language = [

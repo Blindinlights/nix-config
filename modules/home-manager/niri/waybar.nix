@@ -16,6 +16,7 @@
         modules-left = [ "niri/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
+          "custom/theme-toggle"
           "wireplumber"
           "network"
           "cpu"
@@ -95,7 +96,12 @@
             ];
           };
         };
-
+       "custom/theme-toggle" = {
+          format = "󰔎"; 
+          tooltip = "true";
+          tooltip-format = "Toggle Light/Dark Mode";
+          "on-click" = "darkman toggle"; 
+        };
         "custom/power" = {
           format = "";
           tooltip = false;
@@ -134,7 +140,7 @@
 
       #workspaces,
       #clock,
-      #pulseaudio,
+      #wireplumber ,
       #network,
       #cpu,
       #memory,

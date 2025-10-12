@@ -23,6 +23,7 @@
     thunderbird
     cherry-studio
     sillytavern
+    qcm
   ];
 
   programs.firefox.enable = true;

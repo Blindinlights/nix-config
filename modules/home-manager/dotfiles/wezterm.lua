@@ -5,7 +5,20 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 -- config.window_decorations = "RESIZE"
-config.color_scheme = 'Catppuccin Mocha'
+function apply_theme(window)
+  local appearance = window:get_appearance()
+  local color_scheme
+  if appearance:find("Dark") then
+    color_scheme = 'Catppuccin Mocha'
+  else
+    color_scheme = 'Catppuccin Mocha'
+  end
+  window:set_config_overrides({ color_scheme = color_scheme })
+end
+-- concfig.color_scheme = 'Catppuccin Mocha'
+wezterm.on('window-config-reloaded', function(window, pane)
+  apply_theme(window)
+end)
 config.font = wezterm.font('FiraCode Nerd Font')
 config.font_size = 15.0
 
