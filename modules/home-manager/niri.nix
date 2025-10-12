@@ -35,6 +35,7 @@ in
     bibata-cursors
     xwayland-satellite
     brightnessctl
+    playerctl
       ];
 
   home.pointerCursor = {
