@@ -236,7 +236,6 @@ window-rule{
 }
 window-rule{
     match app-id="thunderbird"
-
     open-on-workspace ""
 }
 window-rule{
@@ -252,8 +251,8 @@ layer-rule {
     match namespace="^swww-daemon$"
     place-within-backdrop true
 }
-overview {
-    workspace-shadow {
-        off
-    }
+layer-rule {
+    match namespace="^launcher$"
+
+    baba-is-float true
 }

@@ -63,18 +63,13 @@ in
   services.darkman={
     enable=true;
     darkModeScripts={
-        gtk-theme = ''
-          ${pkgs.dconf}/bin/dconf write \
-          /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-          '';
-        wallpaper="${pkgs.swww}/bin/swww img ${dark} ";
+        wallpaper=''${pkgs.swww}/bin/swww img ${dark} '';
     };
     lightModeScripts ={
-        gtk-theme = ''
-          ${pkgs.dconf}/bin/dconf write \
-            /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-          '';
-        wallpaper="${pkgs.swww}/bin/swww img ${light}";
+        wallpaper=''${pkgs.swww}/bin/swww img ${light}'';
+    };
+    settings={
+      
     };
   };
 }

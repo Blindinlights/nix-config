@@ -15,7 +15,6 @@
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # inputs.agenix.url = "github:ryantm/agenix";
   };
 
   outputs =
@@ -23,9 +22,6 @@
       self,
       nixpkgs,
       home-manager,
-      # rust-overlay,
-      # sops-nix,
-      # agenix,
       ...
     }@inputs:
     {
@@ -36,8 +32,6 @@
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-            # sops-nix.nixosModucles.sops
-            # agenix.nixosModules.default
 
           ];
         };

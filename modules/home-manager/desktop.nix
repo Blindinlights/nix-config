@@ -12,6 +12,9 @@
     btop
     qq
     # flclash
+    # sparkle
+    clash-nyanpasu
+    # gui-for-clash
     clash-verge-rev
     wl-clipboard
     vlc
