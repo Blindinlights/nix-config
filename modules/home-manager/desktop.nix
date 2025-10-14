@@ -12,9 +12,7 @@
     btop
     qq
     # flclash
-    # sparkle
     clash-nyanpasu
-    # gui-for-clash
     clash-verge-rev
     wl-clipboard
     vlc
@@ -27,6 +25,8 @@
     cherry-studio
     sillytavern
     qcm
+    netease-cloud-music-gtk
+    bibata-cursors
   ];
 
   programs.firefox.enable = true;
@@ -43,6 +43,14 @@
       fcitx5-rime
       fcitx5-gtk
     ];
+  };
+
+  gtk={
+    enable=true;
+      iconTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+    };
   };
 
 }
