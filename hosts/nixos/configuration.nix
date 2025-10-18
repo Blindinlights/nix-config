@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 
@@ -50,7 +51,11 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.blindinlights = import ./home.nix;
+  home-manager.extraSpecialArgs = { inherit inputs; };
+  home-manager.users.blindinlights = {
+    imports = [ ./home.nix ];
+  };
+
   home-manager.backupFileExtension = "hm-bak";
 
   programs.nix-ld.enable = true;

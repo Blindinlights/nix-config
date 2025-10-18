@@ -15,6 +15,7 @@
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       self,
       nixpkgs,
       home-manager,
+      spicetify-nix,
       ...
     }@inputs:
     {
@@ -32,7 +34,6 @@
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-
           ];
         };
       };
