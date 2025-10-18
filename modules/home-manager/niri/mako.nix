@@ -15,6 +15,8 @@
       border-radius = 8;
       padding = "10";
       width = 320;
+      default-timeout=5000;
+      icons=true;
 
       "actionable=true" = {
         anchor = "top-right";
