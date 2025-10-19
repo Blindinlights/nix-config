@@ -7,8 +7,13 @@
   "buffer_font_family": "Source Code Pro",
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Macchiato - No Italics",
-    "dark": "One Dark"
+    "light": "Catppuccin Latte (Blur) [Heavy]",
+    "dark": "Catppuccin Mocha (Blur) [Heavy]"
+  },
+  "icon_theme": {
+    "mode": "system",
+    "dark": "Colored Zed Icons Theme Dark",
+    "light": "Colored Zed Icons Theme Light"
   },
   "languages": {
     "Nix": {

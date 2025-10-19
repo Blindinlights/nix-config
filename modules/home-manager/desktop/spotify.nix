@@ -3,9 +3,6 @@
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
   ];
-  # home.packages = [
-  #   pkgs.spotify
-  # ];
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -17,10 +14,14 @@
         adblock
         hidePodcasts
         shuffle
+        beautifulLyrics
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
         ncsVisualizer
+        reddit
+        lyricsPlus
+        marketplace
       ];
       enabledSnippets = with spicePkgs.snippets; [
         rotatingCoverart

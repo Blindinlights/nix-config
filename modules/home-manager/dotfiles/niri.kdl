@@ -29,11 +29,9 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-
-
         width 3
-        active-color "#08ced1"
-        inactive-color "#50505000"
+        active-gradient from="#80c8ff" to="#bbddff" angle=45
+
     }
 
     border {
@@ -47,9 +45,6 @@ layout {
     struts {
     }
 }
-
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "FlClash"
 environment{
     DISPLAY ":1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
@@ -226,17 +221,17 @@ binds {
 
     Mod+Shift+P { power-off-monitors; }
 }
-workspace ""
-workspace ""
-workspace ""
+workspace "home"
+workspace "code"
+workspace "terms"
 window-rule{
     match app-id="dev.zed.Zed"
     match app-id="code"
-    open-on-workspace ""
+    open-on-workspace "code"
 }
 window-rule{
     match app-id="thunderbird"
-    open-on-workspace ""
+    open-on-workspace "terms"
 }
 window-rule{
     match app-id="thunderbird"
