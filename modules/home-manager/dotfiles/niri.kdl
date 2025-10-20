@@ -45,6 +45,8 @@ layout {
     struts {
     }
 }
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "noctalia-shell"
 environment{
     DISPLAY ":1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"

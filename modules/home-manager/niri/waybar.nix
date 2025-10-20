@@ -1,10 +1,9 @@
 { ... }:
 
 {
-  # 启用 Waybar
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       mainbar = {
         layer = "top";
@@ -96,11 +95,11 @@
             ];
           };
         };
-       "custom/theme-toggle" = {
-          format = "󰔎"; 
+        "custom/theme-toggle" = {
+          format = "󰔎";
           tooltip = "true";
           tooltip-format = "Toggle Light/Dark Mode";
-          "on-click" = "darkman toggle"; 
+          "on-click" = "darkman toggle";
         };
         "custom/power" = {
           format = "";
