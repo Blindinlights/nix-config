@@ -41,7 +41,7 @@ layout {
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
     }
-    background-color "transparent"
+    // background-color "transparent"
     struts {
     }
 }
@@ -245,7 +245,7 @@ window-rule {
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 layer-rule {
-    match namespace="^swww-daemon$"
+    match namespace="^quickshell-overview$"
     place-within-backdrop true
 }
 layer-rule {
