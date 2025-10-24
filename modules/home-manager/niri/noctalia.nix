@@ -11,6 +11,9 @@ in
   home.packages = with pkgs; [
     inputs.noctalia.packages.${system}.default
   ];
+  home.sessionVariables={
+    QT_QPA_PLATFORMTHEME="gtk3";
+  };
   programs.noctalia-shell =
     let
       default-wallpaper = "${configRoot}/images/wallpapers/winxp.jpeg";

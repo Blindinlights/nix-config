@@ -22,6 +22,7 @@ in
     dust
     zip
     unzip
+    github-cli
 
     nixfmt
     direnv

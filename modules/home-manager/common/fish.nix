@@ -5,7 +5,8 @@
   programs.fish = {
     enable = true;
     generateCompletions = true;
-    shellAliases  = {
+    shellAliases = {
+      ls = "lsd";
       l = "lsd -l";
       la = "lsd -a";
       lla = "lsd -la";
@@ -15,6 +16,7 @@
       cls = "clear";
       vi = "nvim";
       vim = "nvim";
+      grep = "rg";
       du = "dust";
       "cd.." = "cd ..";
       "..." = "cd ../..";
@@ -76,10 +78,9 @@
 
   };
 
-  programs.starship={
+  programs.starship = {
     enable = true;
-    enableFishIntegration=true;
+    enableFishIntegration = true;
 
   };
 }
-  

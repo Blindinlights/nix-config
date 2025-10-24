@@ -233,6 +233,7 @@ window-rule{
 }
 window-rule{
     match app-id="thunderbird"
+    match app-id="Spotify"
     open-on-workspace "terms"
 }
 window-rule{

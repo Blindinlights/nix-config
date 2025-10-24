@@ -17,7 +17,6 @@
     wl-clipboard
     vlc
 
-    r2modman
     ffmpeg
     yt-dlp
     sniffnet

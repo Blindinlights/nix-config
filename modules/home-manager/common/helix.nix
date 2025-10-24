@@ -16,22 +16,23 @@
         lsp = {
           display-inlay-hints = true;
         };
-        soft-wrap={
-          enable=true;
+        soft-wrap = {
+          enable = true;
         };
       };
       keys.normal = {
-        space.space = ":w";
-        space.q = ":q";
+        "-"=":w";
+        space.e = "file_explorer_in_current_buffer_directory";
+        space.E = "file_explorer";
         esc = [
           "collapse_selection"
           "keep_primary_selection"
         ];
-        d ="delete_selection_noyank";
-        "A-d"="delete_selection";
-        c= "change_selection_noyank";
-        "A-c"="change_selection";
-        "="=":fmt";
+        d = "delete_selection_noyank";
+        "A-d" = "delete_selection";
+        c = "change_selection_noyank";
+        "A-c" = "change_selection";
+        "=" = ":fmt";
       };
     };
     languages = {
@@ -39,14 +40,30 @@
         {
           name = "racket";
           scope = "source.racket";
-          file-types = [ "rkt" "scrbl" "rktl" ];
+          file-types = [
+            "rkt"
+            "scrbl"
+            "rktl"
+          ];
           comment-token = ";";
           formatter = {
             command = "raco";
-            args = [ "fmt" "%{buffer_name}" ];
+            args = [
+              "fmt"
+              "%{buffer_name}"
+            ];
           };
         }
+        {
+          name = "scheme";
+          language-servers = ["steel-language-server"];
+        }
       ];
+      language-server = {
+        steel-language-server= {
+          command = "steel-language-server";
+        };
+      };
     };
     ignores = [
       "target/"
