@@ -1,8 +1,4 @@
 { pkgs, inputs, ... }:
-let
-
-  configRoot = ../../..;
-in
 {
   imports = [
     inputs.noctalia.homeModules.default
@@ -11,14 +7,14 @@ in
   home.packages = with pkgs; [
     inputs.noctalia.packages.${system}.default
   ];
-  home.sessionVariables={
-    QT_QPA_PLATFORMTHEME="gtk3";
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
   };
   programs.noctalia-shell =
     let
-      default-wallpaper = "${configRoot}/images/wallpapers/winxp.jpeg";
-      avatar-image = "${configRoot}/images/avatar.jpg";
-      wallpaper-dir = "${configRoot}/images/wallpapers";
+      default-wallpaper = ./images/wallpapers/winxp.jpeg;
+      avatar-image = ./images/avatar.jpg;
+      wallpaper-dir = ./images/wallpapers;
     in
 
     {

@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./desktop.nix
+    ./noctalia.nix
   ]
   ++ moduleFiles;
   home.packages = with pkgs; [
