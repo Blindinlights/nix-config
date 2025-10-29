@@ -23,6 +23,7 @@ in
     zip
     unzip
     github-cli
+    lazygit
 
     nixfmt
     direnv

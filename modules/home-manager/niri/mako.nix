@@ -2,7 +2,7 @@
 
 {
   services.mako = {
-    enable = true;
+    enable = false;
 
     # 默认样式
     settings = {
@@ -15,8 +15,8 @@
       border-radius = 8;
       padding = "10";
       width = 320;
-      default-timeout=5000;
-      icons=true;
+      default-timeout = 5000;
+      icons = true;
 
       "actionable=true" = {
         anchor = "top-right";

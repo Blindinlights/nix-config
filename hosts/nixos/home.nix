@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{flakeRoot, inputs, ... }:
 {
   imports = [
     ../../modules/home-manager/common.nix

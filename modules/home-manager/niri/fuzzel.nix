@@ -3,6 +3,9 @@
   programs.fuzzel = {
     enable = true;
     settings = {
+      main = {
+        icon-theme = "Papirus";
+      };
       colors = {
         background = "1e1e2edd";
         text = "cdd6f4ff";

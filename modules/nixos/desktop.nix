@@ -10,11 +10,12 @@
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.theme = "catppuccin-sddm";
   services.displayManager.sddm.wayland.enable = true;
   services.libinput.enable = true;
 
   services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.xserver.xkb.options = "caps:super";
 
   services.udisks2.enable = true;
 
@@ -25,6 +26,7 @@
   };
   environment.systemPackages = [
     inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
+    pkgs.catppuccin-sddm
   ];
 
 }

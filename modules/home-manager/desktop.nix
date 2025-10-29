@@ -1,12 +1,10 @@
-{ lib,pkgs, ... }:
+{ lib, pkgs, ... }:
 {
 
-  imports =
-    lib.mapAttrsToList (name: value:
-      if value == "regular" && lib.hasSuffix ".nix" name
-      then ./. + "/desktop/${name}"
-      else null
-    ) (builtins.readDir ./desktop);
+  imports = lib.mapAttrsToList (
+    name: value:
+    if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
+  ) (builtins.readDir ./desktop);
 
   home.packages = with pkgs; [
     btop
@@ -25,7 +23,7 @@
     sillytavern
     qcm
     netease-cloud-music-gtk
-    bibata-cursors
+    papirus-icon-theme
   ];
 
   programs.firefox.enable = true;
@@ -44,11 +42,11 @@
     ];
   };
 
-  gtk={
-    enable=true;
-      iconTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
     };
   };
 

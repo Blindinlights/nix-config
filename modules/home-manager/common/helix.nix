@@ -1,8 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.helix = {
     enable = true;
     defaultEditor = true;
+    extraPackages = [
+      pkgs.kdlfmt
+      pkgs.nodePackages.vscode-json-languageserver
+      pkgs.lua-language-server
+
+    ];
     settings = {
       theme = "catppuccin_mocha";
       editor = {
@@ -21,7 +27,14 @@
         };
       };
       keys.normal = {
-        "-"=":w";
+        "-" = {
+          "-" = ":w";
+          "=" = [
+            ":format"
+            ":w"
+          ];
+          "p" = ":wq";
+        };
         space.e = "file_explorer_in_current_buffer_directory";
         space.E = "file_explorer";
         esc = [
@@ -56,11 +69,11 @@
         }
         {
           name = "scheme";
-          language-servers = ["steel-language-server"];
+          language-servers = [ "steel-language-server" ];
         }
       ];
       language-server = {
-        steel-language-server= {
+        steel-language-server = {
           command = "steel-language-server";
         };
       };

@@ -1,9 +1,18 @@
 # ~/my-nix-config/modules/home-manager/fish.nix
-{ ... }:
+{ pkgs, lib, ... }:
 
 {
+  home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Compact --icons='Many icons' --transient=Yes"
+  '';
   programs.fish = {
     enable = true;
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "tide";
+        inherit (tide) src;
+      }
+    ];
     generateCompletions = true;
     shellAliases = {
       ls = "lsd";
@@ -78,9 +87,4 @@
 
   };
 
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-
-  };
 }

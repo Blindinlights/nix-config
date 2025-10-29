@@ -8,7 +8,7 @@
     inputs.noctalia.packages.${system}.default
   ];
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "gtk3";
+    QS_ICON_THEME = "Papirus";
   };
   programs.noctalia-shell =
     let
@@ -27,7 +27,7 @@
 
         };
 
-        "bar" = {
+        bar = {
           backgroundOpacity = 0;
           density = "default";
           floating = false;
@@ -51,6 +51,7 @@
               { id = "Battery"; }
               { id = "Volume"; }
               { id = "Brightness"; }
+              { id = "DarkMode"; }
               { id = "ControlCenter"; }
             ];
           };
@@ -66,9 +67,23 @@
           defaultWallpaper = default-wallpaper;
           directory = wallpaper-dir;
         };
+        appLauncher = {
+          enableClipboardHistory = true;
+          position = "center";
+          backgroundOpacity = 0.85;
+          pinnedExecs = [ ];
+          useApp2Unit = false;
+          sortByMostUsed = true;
+          terminalCommand = "xterm -e";
+        };
+
+        colorSchemes = {
+          darkMode = false;
+          useWallpaperColors = true;
+        };
         hooks = {
-          enable = true;
-          darkmodeChange = "darkman toggle";
+          enabled = true;
+          darkModeChange = "darkman toggle";
         };
       };
     };

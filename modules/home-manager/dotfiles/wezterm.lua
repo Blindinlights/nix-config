@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = {}
 
 if wezterm.config_builder then
-    config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 -- config.window_decorations = "RESIZE"
 function apply_theme(window)
@@ -15,11 +15,12 @@ function apply_theme(window)
   end
   window:set_config_overrides({ color_scheme = color_scheme })
 end
+
 -- concfig.color_scheme = 'Catppuccin Mocha'
 wezterm.on('window-config-reloaded', function(window, pane)
   apply_theme(window)
 end)
-config.font = wezterm.font('FiraCode Nerd Font')
+config.font = wezterm.font_with_fallback { 'JetBrainsMono Nerd Font', 'Noto Color Emoji' }
 config.font_size = 15.0
 
 config.hide_tab_bar_if_only_one_tab = true
