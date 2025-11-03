@@ -2,7 +2,7 @@
 {
   programs.atuin = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false;
     daemon.enable = true;
   };
 }

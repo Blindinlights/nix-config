@@ -27,13 +27,13 @@
         };
       };
       keys.normal = {
-        "-" = {
-          "-" = ":w";
+        "tab" = {
+          "tab" = ":w";
           "=" = [
             ":format"
             ":w"
           ];
-          "p" = ":wq";
+          "q" = ":wq";
         };
         space.e = "file_explorer_in_current_buffer_directory";
         space.E = "file_explorer";
@@ -71,10 +71,7 @@
           name = "scheme";
           language-servers = [ "steel-language-server" ];
         }
-      ];
-      language-server = {
-        steel-language-server = {
-          command = "steel-language-server";
+      ]; language-server = { steel-language-server = { command = "steel-language-server";
         };
       };
     };

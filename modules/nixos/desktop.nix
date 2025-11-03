@@ -15,7 +15,7 @@
   services.libinput.enable = true;
 
   services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "caps:super";
+  services.xserver.xkb.options = "compose:super,caps:esc";
 
   services.udisks2.enable = true;
 

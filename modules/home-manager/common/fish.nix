@@ -5,6 +5,9 @@
   home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Compact --icons='Many icons' --transient=Yes"
   '';
+  home.packages = [
+    pkgs.fish-lsp
+  ];
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [
@@ -81,6 +84,8 @@
 
     interactiveShellInit = ''
       proxy_on
+
+      atuin init fish | sed "s/-k up/up/g" | source 
 
       eval (ssh-agent -c) >/dev/null 2>&1
     '';

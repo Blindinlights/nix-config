@@ -39,6 +39,7 @@ in
     gtk.enable = true;
     x11.enable = true;
   };
+  xdg.autostart.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [

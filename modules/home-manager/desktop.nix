@@ -21,8 +21,9 @@
     thunderbird
     cherry-studio
     sillytavern
-    qcm
-    netease-cloud-music-gtk
+    telegram-desktop
+    # qcm
+    # netease-cloud-music-gtk
     papirus-icon-theme
   ];
 
