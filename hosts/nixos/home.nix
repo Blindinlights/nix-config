@@ -1,4 +1,9 @@
-{flakeRoot, inputs, ... }:
+{
+  pkgs,
+  flakeRoot,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../../modules/home-manager/common.nix
