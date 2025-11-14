@@ -1,11 +1,9 @@
-# modules/nixos/base.nix
 {
   pkgs,
   ...
 }:
 
 {
-  # 启用 Flakes 和 nix-command
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -13,12 +11,18 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
+  networking = {
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
+  };
 
   time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_US.UTF-8";

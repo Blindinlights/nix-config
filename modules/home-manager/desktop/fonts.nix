@@ -10,7 +10,7 @@
     source-han-sans
     source-han-serif
     source-code-pro
-    noto-fonts-emoji
+    noto-fonts-color-emoji
 
   ];
 }

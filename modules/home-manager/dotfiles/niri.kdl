@@ -412,9 +412,12 @@ window-rule {
 window-rule {
     match app-id="thunderbird"
     match app-id="Spotify"
+    match app-id="com.ayugram.desktop"
     open-on-workspace "terms"
 }
 window-rule {
+    match app-id="Spotify"
+    match app-id="com.ayugram.desktop"
     match app-id="thunderbird"
     match app-id="firefox-nightly"
     open-maximized true

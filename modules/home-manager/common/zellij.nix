@@ -6,7 +6,6 @@
     settings = {
       theme = "catppuccin-mocha";
       default_layout = "niri";
-      default_mode = "locked";
       simplified_ui = true;
       show_startup_tips = false;
       pane_frames = false;

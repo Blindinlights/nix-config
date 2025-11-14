@@ -44,7 +44,9 @@
               { id = "MediaMini"; }
             ];
             right = [
-              { id = "Tray"; }
+              {
+                id = "Tray";
+              }
               { id = "Bluetooth"; }
               { id = "WiFi"; }
               { id = "NotificationHistory"; }
@@ -80,6 +82,9 @@
         colorSchemes = {
           darkMode = false;
           useWallpaperColors = true;
+        };
+        dock = {
+          enable = false;
         };
         hooks = {
           enabled = true;
