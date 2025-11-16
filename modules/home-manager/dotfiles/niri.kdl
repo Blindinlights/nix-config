@@ -412,6 +412,8 @@ window-rule {
 window-rule {
     match app-id="thunderbird"
     match app-id="Spotify"
+    match app-id="wechat"
+    match app-id="QQ"
     match app-id="com.ayugram.desktop"
     open-on-workspace "terms"
 }
@@ -427,7 +429,7 @@ window-rule {
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 layer-rule {
-    match namespace="^quickshell-overview$"
+    match namespace="^noctalia-overview$"
     place-within-backdrop true
 }
 layer-rule {

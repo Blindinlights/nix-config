@@ -10,7 +10,6 @@
     btop
     qq
     flclash
-    # clash-verge-rev
     wl-clipboard
     vlc
 
@@ -24,8 +23,7 @@
     libreoffice
     google-chrome
     tor-browser
-    # qcm
-    # netease-cloud-music-gtk
+    wechat
     papirus-icon-theme
   ];
 

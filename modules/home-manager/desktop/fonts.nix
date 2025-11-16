@@ -13,4 +13,21 @@
     noto-fonts-color-emoji
 
   ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [
+      "Noto Sans CJK SC"
+      "Source Han Sans SC"
+    ];
+
+    serif = [
+      "Noto Serif CJK SC"
+      "Source Han Serif SC"
+    ];
+
+    monospace = [
+      "Source Code Pro"
+      "JetBrains Mono"
+      "Fira Code"
+    ];
+  };
 }
