@@ -6,7 +6,7 @@
     codex
     aider-chat-full
     claude-code
-    claude-code-router
+    # claude-code-router
   
   ];
 

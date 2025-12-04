@@ -15,6 +15,7 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
   networking = {
