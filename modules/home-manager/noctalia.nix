@@ -5,7 +5,7 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.noctalia.packages.${system}.default
+    inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
   ];
   home.sessionVariables = {
     QS_ICON_THEME = "Papirus";
