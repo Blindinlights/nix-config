@@ -24,6 +24,10 @@
     options rtw89_pci disable_aspm_l1=y
     options rtw89_core disable_ps_mode=y
   '';
+  boot.kernel.sysctl = {
+    "net.core.default_qdisc" = "fq";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
   virtualisation.waydroid.enable = true;
   users.users.blindinlights = {
     isNormalUser = true;

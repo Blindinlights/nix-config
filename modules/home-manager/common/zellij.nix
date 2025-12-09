@@ -2,7 +2,7 @@
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
       default_layout = "niri";

@@ -27,6 +27,7 @@
   environment.systemPackages = [
     inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
     pkgs.catppuccin-sddm
+    pkgs.pavucontrol
   ];
 
 }

@@ -9,6 +9,7 @@
     noto-fonts-cjk-serif
     source-han-sans
     source-han-serif
+    source-han-mono
     source-code-pro
     noto-fonts-color-emoji
 

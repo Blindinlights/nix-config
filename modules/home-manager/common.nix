@@ -26,6 +26,8 @@ in
     lazygit
 
     nixfmt
+    stow
+    chezmoi
     direnv
     ast-grep
     just
