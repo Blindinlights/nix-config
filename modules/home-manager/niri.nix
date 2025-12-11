@@ -21,6 +21,7 @@ in
     kdePackages.dolphin
     kdePackages.okular
     cosmic-files
+    cosmic-term
     swaylock
     swayidle
     mako

@@ -18,6 +18,7 @@
     ];
     generateCompletions = true;
     shellAliases = {
+      diff-sys = "nix shell nixpkgs#nvd --command nvd diff /run/booted-system /run/current-system";
       ls = "lsd";
       l = "lsd -l";
       la = "lsd -a";

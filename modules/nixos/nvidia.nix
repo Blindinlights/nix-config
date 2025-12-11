@@ -7,12 +7,17 @@
   ];
   hardware.nvidia = {
     open = true;
+    modesetting.enable = true;
   };
 
   hardware.nvidia.prime = {
-    sync.enable = true;
+    # sync.enable = true;
     nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:6:0:0";
+    offload={
+      enable = true;
+      enableOffloadCmd = true;
+    };
   };
   environment.systemPackages = [
     pkgs.cudatoolkit
