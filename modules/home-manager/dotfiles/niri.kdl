@@ -15,29 +15,37 @@ input {
 output "eDP-1" {
     mode "1920x1080@144.002"
     transform "normal"
+    variable-refresh-rate
+}
+output "eDP-2" {
+    mode "1920x1080@144.002"
+    transform "normal"
+    variable-refresh-rate
 }
 layout {
-    gaps 16
+    gaps 13
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 1.0
     }
     default-column-width {
         proportion 0.5
     }
     focus-ring {
-        width 3
-        active-gradient from="#80c8ff" to="#bbddff" angle=45
-    }
-    border {
-        off
         width 2
-        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        active-gradient from="#f9e2af" to="#7fc8ffcc" angle=45 relative-to="workspace-view"
+        inactive-color "#505050cc"
     }
-    // background-color "transparent"
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#00000088"
+    }
     struts {
 
     }
@@ -57,7 +65,18 @@ window-rule {
 }
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
-
+    slowdown 1.5
+    workspace-switch {
+        spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 250
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
 }
 /-window-rule {
 match app-id=r#"^org\.keepassxc\.KeePassXC$"#
@@ -78,7 +97,6 @@ binds {
     Mod+T {
         spawn "wezterm"
     }
-    // Mod+E { spawn "fuzzel"; }
     Mod+Z {
         spawn "firefox-nightly"
     }
@@ -368,7 +386,7 @@ binds {
         maximize-column
     }
     Mod+Shift+F {
-        fullscreen-window
+        toggle-window-floating
     }
     Mod+C {
         center-column
