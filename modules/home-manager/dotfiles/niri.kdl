@@ -12,12 +12,7 @@ input {
 
     }
 }
-output "eDP-1" {
-    mode "1920x1080@144.002"
-    transform "normal"
-    variable-refresh-rate
-}
-output "eDP-2" {
+output "BOE 0x0C29 0x00000067" {
     mode "1920x1080@144.002"
     transform "normal"
     variable-refresh-rate

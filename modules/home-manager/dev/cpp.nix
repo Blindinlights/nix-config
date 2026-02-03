@@ -2,13 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    clang
-    cmake
-    llvm
-    lldb
-    lld
-    mold
-    valgrind
+    gcc
+    # clang-tools
+    # clang
+    qemu
   ];
 
 }

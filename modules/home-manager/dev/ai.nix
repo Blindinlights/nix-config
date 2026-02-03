@@ -4,8 +4,10 @@
   home.packages = with pkgs; [
     gemini-cli
     codex
-    aider-chat-full
     claude-code
+    opencode
+    amp-cli
+    antigravity
     # claude-code-router
   
   ];

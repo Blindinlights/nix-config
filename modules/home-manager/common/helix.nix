@@ -71,7 +71,30 @@
           name = "scheme";
           language-servers = [ "steel-language-server" ];
         }
-      ]; language-server = { steel-language-server = { command = "steel-language-server";
+        {
+          name = "c";
+          auto-format = true;
+        }
+        {
+          name = "cpp";
+          auto-format = true;
+        }
+
+      ];
+      language-server = {
+        steel-language-server = {
+          command = "steel-language-server";
+        };
+        clangd = {
+          command = "clangd";
+          args = [
+            "--background-index"
+            "--clang-tidy"
+            "--log=verbose"
+          ];
+          config = {
+            fallbackFlags = [ "-std=c++17" ];
+          };
         };
       };
     };

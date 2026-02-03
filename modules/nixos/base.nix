@@ -34,10 +34,10 @@
 
   services.openssh.enable = true;
 
-  nix.settings.substituters = [
-    "https://mirror.sjtu.edu.cn/nix-channels/store"
-    "https://mirrors.ustc.edu.cn/nix-channels/store"
-  ];
+  # nix.settings.substituters = [
+  #   "https://mirror.sjtu.edu.cn/nix-channels/store"
+  #   "https://mirrors.ustc.edu.cn/nix-channels/store"
+  # ];
   nix.settings.auto-optimise-store = true;
 
 }

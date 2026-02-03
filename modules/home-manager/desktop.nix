@@ -9,11 +9,13 @@
   home.packages = with pkgs; [
     btop
     qq
+    appimage-run
     flclash
     wl-clipboard
     vlc
 
     ffmpeg
+    obs-studio
     yt-dlp
     sniffnet
     thunderbird
