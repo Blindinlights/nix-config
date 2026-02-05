@@ -62,6 +62,16 @@ in
       "x-scheme-handler/http" = [ "firefox-nightly.desktop" ];
       "x-scheme-handler/https" = [ "firefox-nightly.desktop" ];
       "application/pdf" = [ "org.kde.okular.desktop" ];
+      "image/jpeg" = [ "imv.desktop" ];
+      "image/png" = [ "imv.desktop" ];
+      "image/gif" = [ "imv.desktop" ];
+      "image/webp" = [ "imv.desktop" ];
+      "image/svg+xml" = [ "imv.desktop" ];
+      "video/mp4" = [ "vlc.desktop" ];
+      "video/x-matroska" = [ "vlc.desktop" ]; # mkv
+      "video/webm" = [ "vlc.desktop" ];
+      "video/quicktime" = [ "vlc.desktop" ]; # mov
+      "video/x-msvideo" = [ "vlc.desktop" ]; # avi
     };
     associations.removed = {
       "application/pdf" = [ "com.google.Chrome.desktop" ];

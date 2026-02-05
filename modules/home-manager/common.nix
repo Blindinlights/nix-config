@@ -28,7 +28,7 @@ in
     nixfmt
     stow
     chezmoi
-    direnv
+    # direnv
     ast-grep
     just
     fzf

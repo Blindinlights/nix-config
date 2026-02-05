@@ -11,8 +11,11 @@
     qq
     appimage-run
     flclash
+    clash-verge-rev
     wl-clipboard
+    imv
     vlc
+    wemeet
 
     ffmpeg
     obs-studio
