@@ -13,6 +13,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/rust.nix
     ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/pg.nix
     # ../../secrets/secrets.nix
   ];
 
