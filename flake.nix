@@ -25,6 +25,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       # inputs.quickshell.follows = "quickshell";
     };
+    browser-previews.url = "github:nix-community/browser-previews";
+    browser-previews.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

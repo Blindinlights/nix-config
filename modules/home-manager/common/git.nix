@@ -22,4 +22,12 @@
     };
 
   };
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user.name = "blindinlights";
+      user.email = "chenyutong007@gmail.com";
+    };
+  };
+  programs.jjui.enable=true;
 }
