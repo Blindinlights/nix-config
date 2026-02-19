@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.git = {
@@ -29,5 +29,8 @@
       user.email = "chenyutong007@gmail.com";
     };
   };
-  programs.jjui.enable=true;
+  programs.jjui.enable = true;
+  home.packages = [
+    pkgs.prek
+  ];
 }
