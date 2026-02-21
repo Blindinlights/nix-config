@@ -9,9 +9,15 @@
   services.blueman.enable = true;
 
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.theme = "catppuccin-sddm";
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "niri";
+  services.displayManager.sddm = {
+    enable = true;
+  };
+  programs.silentSDDM = {
+    enable = true;
+    theme = "default";
+  };
+
   services.libinput.enable = true;
 
   services.xserver.xkb.layout = "us";

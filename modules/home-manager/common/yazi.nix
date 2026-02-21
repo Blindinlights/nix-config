@@ -3,6 +3,6 @@
   programs.yazi={
     enable = true;
     enableFishIntegration = true;
-    # extraPackages =[];
+    shellWrapperName="y";
   };
 }

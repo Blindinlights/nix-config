@@ -23,10 +23,13 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.quickshell.follows = "quickshell";
     };
     browser-previews.url = "github:nix-community/browser-previews";
     browser-previews.inputs.nixpkgs.follows = "nixpkgs";
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -45,6 +48,7 @@
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
+            inputs.silentSDDM.nixosModules.default
           ];
         };
       };
