@@ -14,7 +14,9 @@
     ../../modules/nixos/rust.nix
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/pg.nix
-    # ../../secrets/secrets.nix
+    ../../modules/nixos/game.nix
+    
+    inputs.silentSDDM.nixosModules.default
   ];
 
   networking.hostName = "nixos";
@@ -26,10 +28,6 @@
     options rtw89_pci disable_aspm_l1=y
     options rtw89_core disable_ps_mode=y
     options v4l2loopback video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1  '';
-  # boot.kernel.sysctl = {
-  #   "net.core.default_qdisc" = "fq";
-  #   "net.ipv4.tcp_congestion_control" = "bbr";
-  # };
   virtualisation.waydroid.enable = true;
   virtualisation.docker.enable = true;
   users.users.blindinlights = {

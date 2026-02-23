@@ -30,6 +30,10 @@
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,7 +52,6 @@
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
-            inputs.silentSDDM.nixosModules.default
           ];
         };
       };
