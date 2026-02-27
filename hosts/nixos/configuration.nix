@@ -2,9 +2,20 @@
   pkgs,
   inputs,
   config,
+  vars,
   ...
 }:
 
+let
+  dataRoot = vars.storage.data.mountPoint;
+  userName = vars.user.name;
+  userHome = vars.user.home;
+  userDataDirName = vars.storage.userDataDirName;
+  dataUserDir = "${dataRoot}/${userName}";
+  dataUserDataDir = "${dataUserDir}/${userDataDirName}";
+  dataTeeDir = "${dataRoot}/${vars.storage.teeDirName}";
+  homeDataDir = "${userHome}/${userDataDirName}";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -19,9 +30,11 @@
     inputs.silentSDDM.nixosModules.default
   ];
 
-  networking.hostName = "nixos";
-  networking.proxy.default = "http://127.0.0.1:7890";
-  networking.proxy.noProxy = "127.0.0.1,localhost";
+  networking.hostName = vars.host.name;
+  networking.proxy = {
+    default = vars.networking.proxy.default;
+    noProxy = vars.networking.proxy.noProxy;
+  };
   hardware.enableAllFirmware = true;
   hardware.wirelessRegulatoryDatabase = true;
   boot.extraModprobeConfig = ''
@@ -30,38 +43,31 @@
     options v4l2loopback video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1  '';
   virtualisation.waydroid.enable = true;
   virtualisation.docker.enable = true;
-  users.users.blindinlights = {
+  users.users.${userName} = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [
-      "video"
-      "wheel"
-      "networkmanager"
-    ];
+    extraGroups = vars.user.groups;
   };
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
   };
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/29239a17-d46b-4317-b36a-70c003fef68e";
-    fsType = "btrfs";
-    options = [
-      "compress=zstd"
-      "noatime"
-    ];
+  fileSystems."${dataRoot}" = {
+    device = vars.storage.data.device;
+    fsType = vars.storage.data.fsType;
+    options = vars.storage.data.options;
   };
-  fileSystems."/home/blindinlights/Data" = {
-    device = "/data/blindinlights/Data";
+  fileSystems."${homeDataDir}" = {
+    device = dataUserDataDir;
     fsType = "none";
     options = [ "bind" ];
     neededForBoot = false;
   };
   systemd.tmpfiles.rules = [
-    "d /data 0755 root root -"
-    "d /data/blindinlights 0755 blindinlights users -"
-    "d /data/TEE 0755 blindinlights users -"
-    "d /data/blindinlights/Data 0755 blindinlights users -"
+    "d ${dataRoot} 0755 root root -"
+    "d ${dataUserDir} 0755 ${userName} users -"
+    "d ${dataTeeDir} 0755 ${userName} users -"
+    "d ${dataUserDataDir} 0755 ${userName} users -"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -74,8 +80,8 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = { inherit inputs; };
-  home-manager.users.blindinlights = {
+  home-manager.extraSpecialArgs = { inherit inputs vars; };
+  home-manager.users.${userName} = {
     imports = [ ./home.nix ];
   };
 
@@ -83,5 +89,5 @@
 
   programs.nix-ld.enable = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = vars.stateVersion.system;
 }

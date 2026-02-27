@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, vars, ... }:
 {
 
   services.pipewire = {
@@ -20,15 +20,15 @@
 
   services.libinput.enable = true;
 
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "compose:super,caps:esc";
+  services.xserver.xkb.layout = vars.networking.xkb.layout;
+  services.xserver.xkb.options = vars.networking.xkb.options;
 
   services.udisks2.enable = true;
 
   systemd.services.nix-daemon.environment = {
-    HTTP_PROXY = "http://localhost:7890";
-    HTTPS_PROXY = "http://localhost:7890";
-    NO_PROXY = "localhost,127.0.0.1";
+    HTTP_PROXY = vars.networking.proxy.env.http;
+    HTTPS_PROXY = vars.networking.proxy.env.https;
+    NO_PROXY = vars.networking.proxy.env.noProxy;
   };
   environment.systemPackages = [
     inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin

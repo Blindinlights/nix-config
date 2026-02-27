@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 {
   services.postgresql = {
     enable = true;
@@ -11,9 +11,9 @@
       host    all       all   127.0.0.1/32  scram-sha-256
       host    all       all   ::1/128       scram-sha-256
     '';
-    ensureDatabases = [ "ironclaw" ];
+    ensureDatabases = vars.postgres.ensureDatabases;
     package = pkgs.postgresql_16.withPackages (p: [ p.pgvector ]);
-    ensureUsers = [{ name = "blindinlights"; ensureDBOwnership = false; }];
+    ensureUsers = [{ name = vars.user.name; ensureDBOwnership = false; }];
     
     initialScript = pkgs.writeText "init-sql-script" ''
       \c template1

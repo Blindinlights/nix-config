@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 
 {
   programs.git = {
@@ -14,8 +14,8 @@
         last = "log -1 HEAD";
         unstage = "reset HEAD --";
       };
-      user.name = "blindinlights";
-      user.email = "chenyutong007@gmail.com";
+      user.name = vars.user.git.name;
+      user.email = vars.user.git.email;
       init.defaultBranch = "main";
       pull.rebase = false;
       color.ui = true;
@@ -25,8 +25,8 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user.name = "blindinlights";
-      user.email = "chenyutong007@gmail.com";
+      user.name = vars.user.git.name;
+      user.email = vars.user.git.email;
     };
   };
   programs.jjui.enable = true;

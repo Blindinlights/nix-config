@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  vars,
   ...
 }:
 let
@@ -87,8 +88,8 @@ in
   services.darkman = {
     enable = true;
     settings = {
-      lat = 30.0;
-      lng = 120.0;
+      lat = vars.location.lat;
+      lng = vars.location.lng;
       usegeoclue = false;
     };
     darkModeScripts = {

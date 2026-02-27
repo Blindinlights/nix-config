@@ -44,11 +44,14 @@
       spicetify-nix,
       ...
     }@inputs:
+    let
+      vars = import ./hosts/nixos/vars.nix;
+    in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          system = vars.system;
+          specialArgs = { inherit inputs vars; };
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager

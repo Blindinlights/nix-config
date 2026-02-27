@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 {
   hardware.graphics = {
 
@@ -15,8 +15,8 @@
   };
 
   hardware.nvidia.prime = {
-    nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:6:0:0";
+    nvidiaBusId = vars.hardware.nvidiaBusId;
+    amdgpuBusId = vars.hardware.amdgpuBusId;
     offload = {
       enable = true;
       enableOffloadCmd = true;
