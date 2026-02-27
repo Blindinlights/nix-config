@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  vars,
   ...
 }:
 let
@@ -58,9 +59,12 @@ in
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = [ "firefox-nightly.desktop" ];
-      "x-scheme-handler/http" = [ "firefox-nightly.desktop" ];
-      "x-scheme-handler/https" = [ "firefox-nightly.desktop" ];
+      "text/html" = [ "google-chrome-unstable.desktop" ];
+      "x-scheme-handler/http" = [ "google-chrome-unstable.desktop" ];
+      "x-scheme-handler/https" = [ "google-chrome-unstable.desktop" ];
+      "x-scheme-handler/about" = [ "google-chrome-unstable.desktop" ];
+      "x-scheme-handler/unknown" = [ "google-chrome-unstable.desktop" ];
+      "application/xhtml+xml" = [ "google-chrome-unstable.desktop" ];
       "application/pdf" = [ "org.kde.okular.desktop" ];
       "image/jpeg" = [ "imv.desktop" ];
       "image/png" = [ "imv.desktop" ];
@@ -84,8 +88,8 @@ in
   services.darkman = {
     enable = true;
     settings = {
-      lat = 30.0;
-      lng = 120.0;
+      lat = vars.location.lat;
+      lng = vars.location.lng;
       usegeoclue = false;
     };
     darkModeScripts = {

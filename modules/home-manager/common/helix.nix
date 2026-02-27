@@ -15,10 +15,10 @@
         bufferline = "always";
         line-number = "relative";
         lsp.display-messages = true;
-        inline-diagnostics = {
-          cursor-line = "hint";
-          other-lines = "error";
-        };
+        # inline-diagnostics = {
+        #   cursor-line = "hint";
+        #   other-lines = "error";
+        # };
         lsp = {
           display-inlay-hints = true;
         };

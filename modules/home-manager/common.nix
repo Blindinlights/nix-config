@@ -28,6 +28,7 @@ in
     nixfmt
     stow
     chezmoi
+    aria2
     # direnv
     ast-grep
     just

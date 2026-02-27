@@ -1,5 +1,5 @@
 # ~/my-nix-config/modules/home-manager/fish.nix
-{ pkgs, lib, ... }:
+{ pkgs, lib, vars, ... }:
 
 {
   home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -38,17 +38,6 @@
     };
 
     functions = {
-      y = {
-        description = "Yazi file manager";
-        body = ''
-          set tmp (mktemp -t "yazi-cwd.XXXXXX")
-          yazi $argv --cwd-file="$tmp"
-          if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-              cd -- "$cwd"
-          end
-          rm -f -- "$tmp"
-        '';
-      };
       fish_greeting = {
         description = "fish greeting";
         body = "";
@@ -70,8 +59,8 @@
       proxy_on = {
         description = "Enable proxy";
         body = ''
-          set -gx http_proxy http://127.0.0.1:7890
-          set -gx https_proxy http://127.0.0.1:7890
+          set -gx http_proxy ${vars.networking.proxy.default}
+          set -gx https_proxy ${vars.networking.proxy.default}
         '';
       };
       proxy_off = {

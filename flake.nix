@@ -23,7 +23,16 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.quickshell.follows = "quickshell";
+    };
+    browser-previews.url = "github:nix-community/browser-previews";
+    browser-previews.inputs.nixpkgs.follows = "nixpkgs";
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -35,11 +44,14 @@
       spicetify-nix,
       ...
     }@inputs:
+    let
+      vars = import ./hosts/nixos/vars.nix;
+    in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          system = vars.system;
+          specialArgs = { inherit inputs vars; };
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager

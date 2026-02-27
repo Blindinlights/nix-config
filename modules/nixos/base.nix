@@ -1,5 +1,6 @@
 {
   pkgs,
+  vars,
   ...
 }:
 
@@ -19,18 +20,12 @@
   security.sudo.wheelNeedsPassword = false;
   programs.fish.enable = true;
   networking = {
-    nameservers = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
+    nameservers = vars.networking.nameservers;
   };
 
-  time.timeZone = "Asia/Shanghai";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = [
-    "zh_CN.UTF-8/UTF-8"
-    "en_US.UTF-8/UTF-8"
-  ];
+  time.timeZone = vars.locale.timeZone;
+  i18n.defaultLocale = vars.locale.defaultLocale;
+  i18n.supportedLocales = vars.locale.supportedLocales;
 
   services.openssh.enable = true;
 

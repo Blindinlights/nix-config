@@ -1,0 +1,23 @@
+{ pkgs, vars, ... }:
+{
+  services.postgresql = {
+    enable = true;
+    
+    enableTCPIP = true;
+
+    authentication = pkgs.lib.mkOverride 10 ''
+      # type  database  user  address       method
+      local   all       all                 peer
+      host    all       all   127.0.0.1/32  scram-sha-256
+      host    all       all   ::1/128       scram-sha-256
+    '';
+    ensureDatabases = vars.postgres.ensureDatabases;
+    package = pkgs.postgresql_16.withPackages (p: [ p.pgvector ]);
+    ensureUsers = [{ name = vars.user.name; ensureDBOwnership = false; }];
+    
+    initialScript = pkgs.writeText "init-sql-script" ''
+      \c template1
+      CREATE EXTENSION IF NOT EXISTS vector;
+    '';
+  };
+}

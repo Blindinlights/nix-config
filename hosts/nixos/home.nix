@@ -2,6 +2,7 @@
   pkgs,
   flakeRoot,
   inputs,
+  vars,
   ...
 }:
 {
@@ -10,7 +11,7 @@
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/development.nix
   ];
-  home.username = "blindinlights";
-  home.homeDirectory = "/home/blindinlights";
-  home.stateVersion = "25.05";
+  home.username = vars.user.name;
+  home.homeDirectory = vars.user.home;
+  home.stateVersion = vars.stateVersion.home;
 }

@@ -93,7 +93,7 @@ binds {
         spawn "wezterm"
     }
     Mod+Z {
-        spawn "firefox-nightly"
+        spawn "google-chrome-unstable"
     }
     Super+Alt+L {
         spawn "swaylock"
@@ -435,6 +435,8 @@ window-rule {
     match app-id="com.ayugram.desktop"
     match app-id="thunderbird"
     match app-id="firefox-nightly"
+    match app-id="google-chrome-unstable"
+    
     open-maximized true
 }
 window-rule {

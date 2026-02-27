@@ -1,20 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 {
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+
+    enable = true;
+    enable32Bit = true;
+  };
   services.xserver.videoDrivers = [
     "nvidia"
     "amdgpu"
   ];
   hardware.nvidia = {
-    open = true;
+    open = false;
     modesetting.enable = true;
   };
 
   hardware.nvidia.prime = {
-    # sync.enable = true;
-    nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:6:0:0";
-    offload={
+    nvidiaBusId = vars.hardware.nvidiaBusId;
+    amdgpuBusId = vars.hardware.amdgpuBusId;
+    offload = {
       enable = true;
       enableOffloadCmd = true;
     };
@@ -23,6 +26,6 @@
     pkgs.cudatoolkit
     pkgs.cudaPackages.cudnn
     pkgs.cudaPackages.cuda_cudart
-    
+
   ];
 }

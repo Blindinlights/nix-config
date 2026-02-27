@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{inputs, lib, pkgs, ... }:
 {
 
   imports = lib.mapAttrsToList (
@@ -16,7 +16,6 @@
     imv
     vlc
     wemeet
-
     ffmpeg
     obs-studio
     yt-dlp
@@ -26,10 +25,12 @@
     sillytavern
     ayugram-desktop
     libreoffice
-    google-chrome
+    # google-chrome
     tor-browser
     wechat
     papirus-icon-theme
+  ]++[
+    inputs.browser-previews.packages.${pkgs.system}.google-chrome-dev
   ];
 
   programs.firefox.enable = true;
