@@ -54,8 +54,14 @@
           specialArgs = { inherit inputs vars; };
           modules = [
             ./hosts/nixos/configuration.nix
-            home-manager.nixosModules.home-manager
           ];
+        };
+      };
+      homeConfigurations = {
+        "${vars.user.name}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = self.nixosConfigurations.nixos.pkgs;
+          extraSpecialArgs = { inherit inputs vars; };
+          modules = [ ./hosts/nixos/home.nix ];
         };
       };
     };

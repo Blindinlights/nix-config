@@ -78,15 +78,6 @@ in
   programs.niri.enable = true;
   services.desktopManager.cosmic.enable = true;
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = { inherit inputs vars; };
-  home-manager.users.${userName} = {
-    imports = [ ./home.nix ];
-  };
-
-  home-manager.backupFileExtension = "hm-bak";
-
   programs.nix-ld.enable = true;
 
   system.stateVersion = vars.stateVersion.system;

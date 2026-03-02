@@ -24,7 +24,7 @@
     cherry-studio
     sillytavern
     ayugram-desktop
-    libreoffice
+    # libreoffice
     # google-chrome
     tor-browser
     wechat
