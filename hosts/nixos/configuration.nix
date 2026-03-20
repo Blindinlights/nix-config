@@ -30,6 +30,13 @@ in
     inputs.silentSDDM.nixosModules.default
   ];
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs vars; };
+    users.${userName} = import ./home.nix;
+  };
+
   networking.hostName = vars.host.name;
   networking.proxy = {
     default = vars.networking.proxy.default;

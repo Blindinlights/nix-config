@@ -27,7 +27,7 @@
     # libreoffice
     # google-chrome
     tor-browser
-    wechat
+    # wechat
     papirus-icon-theme
   ]++[
     inputs.browser-previews.packages.${pkgs.system}.google-chrome-dev

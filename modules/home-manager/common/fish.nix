@@ -19,6 +19,8 @@
     generateCompletions = true;
     shellAliases = {
       diff-sys = "nix shell nixpkgs#nvd --command nvd diff /run/booted-system /run/current-system";
+      nr = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
+      rebuild = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
       ls = "lsd";
       l = "lsd -l";
       la = "lsd -a";
