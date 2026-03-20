@@ -12,6 +12,7 @@
     source-han-mono
     source-code-pro
     noto-fonts-color-emoji
+    corefonts
 
   ];
   fonts.fontconfig.defaultFonts = {

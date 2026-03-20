@@ -83,7 +83,8 @@ in
   boot.kernelModules = [ "v4l2loopback" ];
 
   programs.niri.enable = true;
-  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   programs.nix-ld.enable = true;
 

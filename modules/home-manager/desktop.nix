@@ -1,4 +1,4 @@
-{inputs, lib, pkgs, ... }:
+{config, inputs, lib, pkgs, ... }:
 {
 
   imports = lib.mapAttrsToList (
@@ -11,7 +11,7 @@
     qq
     appimage-run
     flclash
-    clash-verge-rev
+    # clash-verge-rev
     wl-clipboard
     imv
     vlc
@@ -21,16 +21,16 @@
     yt-dlp
     sniffnet
     thunderbird
-    cherry-studio
+    # (cherry-studio.override { electron_38 = pkgs.electron_39; })
     sillytavern
     ayugram-desktop
-    # libreoffice
+    libreoffice
     # google-chrome
     tor-browser
     # wechat
     papirus-icon-theme
   ]++[
-    inputs.browser-previews.packages.${pkgs.system}.google-chrome-dev
+    inputs.browser-previews.packages.${pkgs.stdenv.hostPlatform.system}.google-chrome-dev
   ];
 
   programs.firefox.enable = true;
@@ -51,6 +51,7 @@
 
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme;
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus";
