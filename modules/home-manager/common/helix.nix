@@ -35,8 +35,8 @@
           ];
           "q" = ":wq";
         };
-        "[j"="jump_backward";
-        "]j"="jump_forward";
+        # "[j"="jump_backward";
+        # "]j"="jump_forward";
         space.e = "file_explorer_in_current_buffer_directory";
         space.E = "file_explorer";
         esc = [

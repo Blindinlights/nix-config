@@ -30,6 +30,8 @@
       "Source Code Pro"
       "JetBrains Mono"
       "Fira Code"
+      "Source Han Mono SC"
+      "Noto Sans Mono CJK SC"
     ];
   };
 }

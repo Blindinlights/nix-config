@@ -35,6 +35,7 @@ in
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs vars; };
     users.${userName} = import ./home.nix;
+    backupFileExtension = "backup";
   };
 
   networking.hostName = vars.host.name;
