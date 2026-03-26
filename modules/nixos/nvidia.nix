@@ -1,4 +1,10 @@
-{ pkgs, vars, ... }:
+{
+  config,
+  pkgs,
+  vars,
+  ...
+}:
+
 {
   hardware.graphics = {
 
@@ -23,9 +29,9 @@
     };
   };
   environment.systemPackages = [
-    pkgs.cudatoolkit
-    pkgs.cudaPackages.cudnn
-    pkgs.cudaPackages.cuda_cudart
+    # pkgs.cudatoolkit
+    # pkgs.cudaPackages.cudnn
+    # pkgs.cudaPackages.cuda_cudart
 
   ];
 }

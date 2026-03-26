@@ -12,6 +12,7 @@
     source-han-mono
     source-code-pro
     noto-fonts-color-emoji
+    corefonts
 
   ];
   fonts.fontconfig.defaultFonts = {
@@ -29,6 +30,8 @@
       "Source Code Pro"
       "JetBrains Mono"
       "Fira Code"
+      "Source Han Mono SC"
+      "Noto Sans Mono CJK SC"
     ];
   };
 }

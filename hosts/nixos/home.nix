@@ -11,6 +11,7 @@
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/development.nix
   ];
+  programs.home-manager.enable = true;
   home.username = vars.user.name;
   home.homeDirectory = vars.user.home;
   home.stateVersion = vars.stateVersion.home;

@@ -30,6 +30,14 @@ in
     inputs.silentSDDM.nixosModules.default
   ];
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs vars; };
+    users.${userName} = import ./home.nix;
+    backupFileExtension = "backup";
+  };
+
   networking.hostName = vars.host.name;
   networking.proxy = {
     default = vars.networking.proxy.default;
@@ -76,7 +84,8 @@ in
   boot.kernelModules = [ "v4l2loopback" ];
 
   programs.niri.enable = true;
-  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   programs.nix-ld.enable = true;
 

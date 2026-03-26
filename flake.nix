@@ -38,10 +38,8 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
-      spicetify-nix,
       ...
     }@inputs:
     let
@@ -53,15 +51,9 @@
           system = vars.system;
           specialArgs = { inherit inputs vars; };
           modules = [
+            home-manager.nixosModules.home-manager
             ./hosts/nixos/configuration.nix
           ];
-        };
-      };
-      homeConfigurations = {
-        "${vars.user.name}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = self.nixosConfigurations.nixos.pkgs;
-          extraSpecialArgs = { inherit inputs vars; };
-          modules = [ ./hosts/nixos/home.nix ];
         };
       };
     };

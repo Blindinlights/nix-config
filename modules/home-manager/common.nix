@@ -24,6 +24,7 @@ in
     unzip
     github-cli
     lazygit
+    gh
 
     nixfmt
     stow
@@ -39,5 +40,6 @@ in
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = true;
   };
 }

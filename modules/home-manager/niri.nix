@@ -25,7 +25,7 @@ in
     cosmic-term
     swaylock
     swayidle
-    mako
+    # mako
     exfatprogs
     ntfs3g
     bibata-cursors

@@ -443,6 +443,10 @@ window-rule {
     match app-id="steam" title="^notificationtoasts_\\d+_desktop$"
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
+window-rule {
+    match app-id="wemeetapp" title="^EmojiFloatWnd$"
+    default-floating-position x=100 y=300 relative-to="bottom-right"
+}
 layer-rule {
     match namespace="noctalia-overview"
     place-within-backdrop true
