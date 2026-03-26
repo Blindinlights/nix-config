@@ -64,6 +64,18 @@ config.keys = {
     action = act.CloseCurrentTab { confirm = false },
   },
 }
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = act.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL|SHIFT',
+    action = act.OpenLinkAtMouseCursor,
+  },
+}
 config.skip_close_confirmation_for_processes_named = {
   'bash',
   'sh',

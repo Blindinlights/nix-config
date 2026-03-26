@@ -20,6 +20,17 @@
       diff-sys = "nix shell nixpkgs#nvd --command nvd diff /run/booted-system /run/current-system";
       nr = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
       rebuild = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
+      j = "jj";
+      js = "jj status";
+      jl = "jj log";
+      jd = "jj diff";
+      jn = "jj new";
+      jc = "jj commit";
+      jds = "jj describe";
+      je = "jj edit";
+      jr = "jj rebase";
+      jsq = "jj squash";
+      jp = "jj git push";
       ls = "lsd";
       l = "lsd -l";
       la = "lsd -a";
