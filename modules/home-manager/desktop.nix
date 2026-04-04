@@ -1,4 +1,10 @@
-{config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
 
   imports = lib.mapAttrsToList (
@@ -6,34 +12,31 @@
     if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
   ) (builtins.readDir ./desktop);
 
-  home.packages = with pkgs; [
-    btop
-    qq
-    appimage-run
-    flclash
-    # clash-verge-rev
-    wl-clipboard
-    imv
-    vlc
-    wemeet
-    ffmpeg
-    obs-studio
-    yt-dlp
-    sniffnet
-    thunderbird
-    # (cherry-studio.override { electron_38 = pkgs.electron_39; })
-    sillytavern
-    ayugram-desktop
-    libreoffice
-    # google-chrome
-    tor-browser
-    # wechat
-    papirus-icon-theme
-  ]++[
-    inputs.browser-previews.packages.${pkgs.stdenv.hostPlatform.system}.google-chrome-dev
-  ];
-
-  programs.firefox.enable = true;
+  home.packages =
+    with pkgs;
+    [
+      btop
+      qq
+      appimage-run
+      flclash
+      wl-clipboard
+      imv
+      vlc
+      wemeet
+      ffmpeg
+      obs-studio
+      yt-dlp
+      sniffnet
+      thunderbird
+      # cherry-studio
+      sillytavern
+      ayugram-desktop
+      libreoffice
+      tor-browser
+      wechat
+      papirus-icon-theme
+      google-chrome
+    ];
 
   i18n.inputMethod = {
     enable = true;

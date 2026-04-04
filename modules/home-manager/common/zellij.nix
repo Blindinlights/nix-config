@@ -9,7 +9,7 @@
       default_layout = "compact";
       simplified_ui = true;
       show_startup_tips = false;
-      mouse_mode = false;
+      # mouse_mode = false;
       scroll_buffer_size = 50000;
       pane_frames = false;
       copy_command = "wl-copy";

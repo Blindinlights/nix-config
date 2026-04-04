@@ -24,14 +24,8 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    browser-previews.url = "github:nix-community/browser-previews";
-    browser-previews.inputs.nixpkgs.follows = "nixpkgs";
-    silentSDDM = {
+  silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -26,7 +26,7 @@ in
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/pg.nix
     ../../modules/nixos/game.nix
-    
+
     inputs.silentSDDM.nixosModules.default
   ];
 
@@ -88,6 +88,14 @@ in
   services.desktopManager.plasma6.enable = true;
 
   programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    libcap 
+    stdenv.cc.cc.lib
+    zlib
+    curl
+    openssl
+  ];
 
   system.stateVersion = vars.stateVersion.system;
 }
