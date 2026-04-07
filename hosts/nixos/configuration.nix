@@ -49,7 +49,7 @@ in
     options rtw89_pci disable_aspm_l1=y
     options rtw89_core disable_ps_mode=y
     options v4l2loopback video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1  '';
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
   virtualisation.docker.enable = true;
   users.users.${userName} = {
     isNormalUser = true;

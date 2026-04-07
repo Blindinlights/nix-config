@@ -14,6 +14,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import ../../overlays/cherry-studio.nix)
+  ];
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;

@@ -1,11 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+
+let
+  helixSteel = inputs.helix-steel.packages.${pkgs.stdenv.hostPlatform.system}.helix.overrideAttrs (_old: {
+    cargoBuildFeatures = [ "steel" "git" ];
+  });
+in
 {
   programs.helix = {
     enable = true;
+    package = helixSteel;
     defaultEditor = true;
     extraPackages = [
+      pkgs.steel
       pkgs.kdlfmt
-      pkgs.nodePackages.vscode-json-languageserver
+      # pkgs.nodePackages.vscode-json-languageserver
       pkgs.lua-language-server
 
     ];
@@ -43,6 +51,10 @@
           "collapse_selection"
           "keep_primary_selection"
         ];
+        "C-d" = ":half-page-down-smooth";
+        "C-u" = ":half-page-up-smooth";
+        pageup = ":page-up-smooth";
+        pagedown = ":page-down-smooth";
         d = "delete_selection_noyank";
         "A-d" = "delete_selection";
         c = "change_selection_noyank";

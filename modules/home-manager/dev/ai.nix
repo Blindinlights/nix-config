@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
-    gemini-cli
+    # gemini-cli
     codex
-    claude-code
+    inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # claude-code
     opencode
   
   ];

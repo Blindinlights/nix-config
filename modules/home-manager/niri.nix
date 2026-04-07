@@ -20,13 +20,10 @@ in
   ]
   ++ moduleFiles;
   home.packages = with pkgs; [
-    kdePackages.dolphin
     kdePackages.okular
+    xournalpp
     cosmic-files
     cosmic-term
-    swaylock
-    swayidle
-    # mako
     exfatprogs
     ntfs3g
     bibata-cursors

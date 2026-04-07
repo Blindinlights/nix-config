@@ -28,7 +28,7 @@
       yt-dlp
       sniffnet
       thunderbird
-      # cherry-studio
+      cherry-studio
       sillytavern
       ayugram-desktop
       libreoffice
