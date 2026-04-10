@@ -4,7 +4,7 @@ let
    moduleFiles =
     lib.mapAttrsToList (name: value:
       if value == "regular" && lib.hasSuffix ".nix" name
-      then  "${modulesPath}/${name}"
+      then modulesPath + "/${name}"
       else null
     ) (builtins.readDir modulesPath);
 in 

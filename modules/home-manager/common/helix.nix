@@ -1,11 +1,46 @@
 { pkgs, inputs, ... }:
 
 let
-  helixSteel = inputs.helix-steel.packages.${pkgs.stdenv.hostPlatform.system}.helix.overrideAttrs (_old: {
-    cargoBuildFeatures = [ "steel" "git" ];
-  });
+  helixSteel =
+    inputs.helix-steel.packages.${pkgs.stdenv.hostPlatform.system}.helix.overrideAttrs
+      (_old: {
+        cargoBuildFeatures = [
+          "steel"
+          "git"
+        ];
+      });
+  infoKeybindings = {
+    p = ":copy-current-path";
+    P = ":copy-current-position";
+  };
+  markdownKeybindings = {
+    l = ":markdown-link-selection";
+  };
+  openKeybindings = {
+    h = ":open-helix-scm";
+    i = ":open-init-scm";
+  };
+  testKeybindings = {
+    r = ":cargo-test-nearest";
+  };
+  textKeybindings = {
+    c = ":selection-smart-case";
+    u = ":selection-upcase";
+    l = ":selection-downcase";
+    b = ":selection-toggle-bool";
+    s = ":trim-and-copy-selection";
+  };
 in
 {
+  home.file = {
+    ".config/helix/init.scm" = {
+      source = ../dotfiles/helix/init.scm;
+    };
+    ".config/helix/helix.scm" = {
+      source = ../dotfiles/helix/helix.scm;
+    };
+  };
+
   programs.helix = {
     enable = true;
     package = helixSteel;
@@ -13,7 +48,6 @@ in
     extraPackages = [
       pkgs.steel
       pkgs.kdlfmt
-      # pkgs.nodePackages.vscode-json-languageserver
       pkgs.lua-language-server
 
     ];
@@ -23,10 +57,6 @@ in
         bufferline = "always";
         line-number = "relative";
         lsp.display-messages = true;
-        # inline-diagnostics = {
-        #   cursor-line = "hint";
-        #   other-lines = "error";
-        # };
         lsp = {
           display-inlay-hints = true;
         };
@@ -45,8 +75,15 @@ in
         };
         # "[j"="jump_backward";
         # "]j"="jump_forward";
+        "`" = ":selection-smart-case";
+        "~" = ":selection-toggle-bool";
         space.e = "file_explorer_in_current_buffer_directory";
         space.E = "file_explorer";
+        space.i = infoKeybindings;
+        space.m = markdownKeybindings;
+        space.o = openKeybindings;
+        space.t = testKeybindings;
+        space.T = textKeybindings;
         esc = [
           "collapse_selection"
           "keep_primary_selection"
@@ -60,6 +97,15 @@ in
         c = "change_selection_noyank";
         "A-c" = "change_selection";
         "=" = ":fmt";
+      };
+      keys.select = {
+        "`" = ":selection-smart-case";
+        "~" = ":selection-toggle-bool";
+        space.i = infoKeybindings;
+        space.m = markdownKeybindings;
+        space.o = openKeybindings;
+        space.t = testKeybindings;
+        space.T = textKeybindings;
       };
     };
     languages = {
