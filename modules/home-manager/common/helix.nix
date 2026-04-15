@@ -63,6 +63,12 @@ in
         soft-wrap = {
           enable = true;
         };
+        file-picker = {
+          git-ignore = true;
+        };
+        smart-tab = {
+          enable = false;
+        };
       };
       keys.normal = {
         "tab" = {

@@ -13,6 +13,11 @@ in
 
   ]++moduleFiles;
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
     tree
     lsd
@@ -30,7 +35,6 @@ in
     stow
     chezmoi
     aria2
-    # direnv
     ast-grep
     just
     fzf
