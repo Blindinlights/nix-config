@@ -7,10 +7,12 @@
 let
   modulesPath = ./niri;
   browserDesktop = "firefox-nightly.desktop";
-  moduleFiles = lib.mapAttrsToList (
-    name: value:
-    if value == "regular" && lib.hasSuffix ".nix" name then "${modulesPath}/${name}" else null
-  ) (builtins.readDir modulesPath);
+  moduleFiles = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then "${modulesPath}/${name}" else null
+    ) (builtins.readDir modulesPath)
+  );
 
 in
 {

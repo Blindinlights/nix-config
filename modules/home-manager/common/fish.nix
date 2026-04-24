@@ -237,6 +237,13 @@
       proxy_on = {
         description = "Enable proxy";
         body = ''
+          set -l proxy_host 127.0.0.1
+          set -l proxy_port 7890
+
+          if not ${pkgs.netcat}/bin/nc -z $proxy_host $proxy_port >/dev/null 2>&1
+            return 1
+          end
+
           set -gx http_proxy ${vars.networking.proxy.default}
           set -gx https_proxy ${vars.networking.proxy.default}
         '';
@@ -253,11 +260,9 @@
     interactiveShellInit = ''
       set -g fish_transient_prompt 1
 
-      proxy_on
+      proxy_on >/dev/null 2>&1
 
       atuin init fish | sed "s/-k up/up/g" | source 
-
-      eval (ssh-agent -c) >/dev/null 2>&1
     '';
 
   };

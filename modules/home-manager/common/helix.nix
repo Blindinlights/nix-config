@@ -79,8 +79,12 @@ in
           ];
           "q" = ":wq";
         };
-        # "[j"="jump_backward";
-        # "]j"="jump_forward";
+        "["={
+          "j"="jump_backward";
+        };
+        "]"={
+          "j"="jump_backward";
+        };
         "`" = ":selection-smart-case";
         "~" = ":selection-toggle-bool";
         space.e = "file_explorer_in_current_buffer_directory";

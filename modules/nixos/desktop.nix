@@ -1,4 +1,4 @@
-{ inputs, pkgs, vars, ... }:
+{ pkgs, vars, ... }:
 {
 
   services.pipewire = {
@@ -31,7 +31,6 @@
     NO_PROXY = vars.networking.proxy.env.noProxy;
   };
   environment.systemPackages = [
-    inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
     pkgs.catppuccin-sddm
     pkgs.pavucontrol
   ];

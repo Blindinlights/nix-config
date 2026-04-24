@@ -7,36 +7,36 @@
 }:
 {
 
-  imports = lib.mapAttrsToList (
-    name: value:
-    if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
-  ) (builtins.readDir ./desktop);
+  imports = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
+    ) (builtins.readDir ./desktop)
+  );
 
-  home.packages =
-    with pkgs;
-    [
-      btop
-      qq
-      appimage-run
-      flclash
-      wl-clipboard
-      imv
-      vlc
-      wemeet
-      ffmpeg
-      obs-studio
-      yt-dlp
-      sniffnet
-      thunderbird
-      cherry-studio
-      sillytavern
-      ayugram-desktop
-      libreoffice
-      tor-browser
-      wechat
-      papirus-icon-theme
-      google-chrome
-    ];
+  home.packages = with pkgs; [
+    btop
+    qq
+    appimage-run
+    flclash
+    wl-clipboard
+    imv
+    vlc
+    wemeet
+    ffmpeg
+    obs-studio
+    yt-dlp
+    sniffnet
+    thunderbird
+    cherry-studio
+    sillytavern
+    ayugram-desktop
+    libreoffice
+    tor-browser
+    wechat
+    papirus-icon-theme
+    google-chrome
+  ];
 
   i18n.inputMethod = {
     enable = true;

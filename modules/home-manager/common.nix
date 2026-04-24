@@ -1,17 +1,19 @@
-{lib, pkgs, ... }:
-let
-   modulesPath =./common;
-   moduleFiles =
-    lib.mapAttrsToList (name: value:
-      if value == "regular" && lib.hasSuffix ".nix" name
-      then modulesPath + "/${name}"
-      else null
-    ) (builtins.readDir modulesPath);
-in 
 {
-  imports = [
-
-  ]++moduleFiles;
+  lib,
+  pkgs,
+  ...
+}:
+let
+  modulesPath = ./common;
+  moduleFiles = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then modulesPath + "/${name}" else null
+    ) (builtins.readDir modulesPath)
+  );
+in
+{
+  imports = moduleFiles;
 
   programs.direnv = {
     enable = true;
