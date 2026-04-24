@@ -7,6 +7,7 @@
 let
   modulesPath = ./niri;
   browserDesktop = "firefox-nightly.desktop";
+  fileManagerDesktop = "com.system76.CosmicFiles.desktop";
   moduleFiles = lib.filter (path: path != null) (
     lib.mapAttrsToList (
       name: value:
@@ -64,6 +65,7 @@ in
       "x-scheme-handler/https" = [ browserDesktop ];
       "x-scheme-handler/about" = [ browserDesktop ];
       "x-scheme-handler/unknown" = [ browserDesktop ];
+      "inode/directory" = [ fileManagerDesktop ];
       "application/xhtml+xml" = [ browserDesktop ];
       "application/pdf" = [ "org.kde.okular.desktop" ];
       "image/jpeg" = [ "imv.desktop" ];
@@ -79,6 +81,11 @@ in
     };
     associations.removed = {
       "application/pdf" = [ "com.google.Chrome.desktop" ];
+      "inode/directory" = [
+        "nautilus.desktop"
+        "org.gnome.Nautilus.desktop"
+        "yazi.desktop"
+      ];
     };
   };
   home.file.".config/niri/config.kdl" = {
@@ -88,8 +95,8 @@ in
   services.darkman = {
     enable = true;
     settings = {
-      lat = vars.location.lat;
-      lng = vars.location.lng;
+      # lat = vars.location.lat;
+      # lng = vars.location.lng;
       usegeoclue = false;
     };
     darkModeScripts = {

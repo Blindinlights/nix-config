@@ -57,9 +57,14 @@
       __fish_colorize_short_id = {
         description = "Render a short id with segmented colors";
         body = ''
-          set -l short_id (string sub -s 1 -l 8 -- $argv[1])
-          set -l first_half (string sub -s 1 -l 4 -- $short_id)
-          set -l second_half (string sub -s 5 -l 4 -- $short_id)
+          set -l first_half $argv[1]
+          set -l second_half $argv[2]
+
+          if test (count $argv) -lt 2
+            set -l short_id (string sub -s 1 -l 8 -- $first_half)
+            set first_half (string sub -s 1 -l 4 -- $short_id)
+            set second_half (string sub -s 5 -l 4 -- $short_id)
+          end
 
           set_color brred
           echo -n $first_half
@@ -84,7 +89,7 @@
               --ignore-working-copy \
               --no-pager \
               --no-graph \
-              -T 'if(bookmarks, bookmarks, "-") ++ "\t" ++ change_id.shortest(8) ++ "\t" ++ if(empty, "1", "0") ++ "\t" ++ if(conflict, "1", "0") ++ "\t" ++ if(description.first_line(), description.first_line(), "-")' \
+              -T 'if(bookmarks, bookmarks, "-") ++ "\t" ++ change_id.shortest(8).prefix() ++ "\t" ++ change_id.shortest(8).rest() ++ "\t" ++ if(empty, "1", "0") ++ "\t" ++ if(conflict, "1", "0") ++ "\t" ++ if(description.first_line(), description.first_line(), "-")' \
               2>/dev/null | string trim
           )
 
@@ -92,10 +97,11 @@
 
           set -l fields (string split \t -- $metadata)
           set -l bookmarks $fields[1]
-          set -l short_id $fields[2]
-          set -l is_empty $fields[3]
-          set -l has_conflict $fields[4]
-          set -l summary $fields[5]
+          set -l short_id_prefix $fields[2]
+          set -l short_id_rest $fields[3]
+          set -l is_empty $fields[4]
+          set -l has_conflict $fields[5]
+          set -l summary $fields[6]
 
           set_color --bold brmagenta
           echo -n " jj"
@@ -111,7 +117,7 @@
             echo -n "@"
           end
 
-          __fish_colorize_short_id $short_id
+          __fish_colorize_short_id $short_id_prefix "$short_id_rest"
 
           if test "$is_empty" = "1"
             set_color yellow
