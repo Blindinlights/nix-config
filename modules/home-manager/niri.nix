@@ -40,7 +40,7 @@ in
     name = "Bibata-Modern-Classic";
     size = 24;
     gtk.enable = true;
-    x11.enable = true;
+    x11.enable = false;
   };
   xdg.autostart.enable = true;
   xdg.portal = {

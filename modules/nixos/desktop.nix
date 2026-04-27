@@ -3,8 +3,11 @@
 
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
+  services.flatpak.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 

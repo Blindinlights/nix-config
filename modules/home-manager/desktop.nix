@@ -22,7 +22,7 @@
     wl-clipboard
     imv
     vlc
-    wemeet
+    # wemeet
     ffmpeg
     obs-studio
     yt-dlp
@@ -54,6 +54,7 @@
 
   gtk = {
     enable = true;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     gtk4.theme = config.gtk.theme;
     iconTheme = {
       package = pkgs.papirus-icon-theme;

@@ -48,6 +48,7 @@ layout {
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "thunderbird"
+spawn-at-startup "FlClash"
 environment {
     DISPLAY ":1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
