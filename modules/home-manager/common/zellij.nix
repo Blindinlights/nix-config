@@ -7,6 +7,7 @@
       theme = "glass-night";
       default_shell = "fish";
       default_layout = "compact";
+      on_force_close = "quit";
       simplified_ui = true;
       show_startup_tips = false;
       # mouse_mode = false;
