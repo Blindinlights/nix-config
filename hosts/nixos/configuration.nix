@@ -52,7 +52,7 @@ in
   virtualisation.docker.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     extraGroups = vars.user.groups;
   };
   networking.firewall = {

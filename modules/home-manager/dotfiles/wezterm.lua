@@ -50,6 +50,7 @@ config.font = wezterm.font_with_fallback {
   'Noto Color Emoji',
 }
 config.font_size = 15.0
+config.default_prog = { 'fish' }
 config.window_padding = {
   left = 3,
   right = 1,
