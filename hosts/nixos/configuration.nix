@@ -52,7 +52,7 @@ in
   virtualisation.docker.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    shell = pkgs.bash;
+    shell = pkgs.nushell;
     extraGroups = vars.user.groups;
   };
   networking.firewall = {
@@ -85,10 +85,9 @@ in
   programs.niri.enable = true;
   services.desktopManager.cosmic.enable = true;
 
-
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    libcap 
+    libcap
     stdenv.cc.cc.lib
     zlib
     curl

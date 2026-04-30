@@ -1,8 +1,9 @@
-
-{...}:{
-  programs.yazi={
+{ ... }:
+{
+  programs.yazi = {
     enable = true;
     enableFishIntegration = true;
-    shellWrapperName="y";
+    enableNushellIntegration = true;
+    shellWrapperName = "y";
   };
 }

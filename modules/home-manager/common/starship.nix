@@ -1,38 +1,40 @@
 { pkgs, ... }:
 
 let
-  starshipFishShell = [
-    "${pkgs.fish}/bin/fish"
-    "--no-config"
+  starshipNushellShell = [
+    "${pkgs.nushell}/bin/nu"
+    "--no-config-file"
+    "--commands"
   ];
 
   colorizeShortId = ''
-    function __starship_colorize_short_id
-      set -l first_half $argv[1]
-      set -l second_half $argv[2]
+    def __starship_colorize_short_id [first_half: string, second_half?: string] {
+      mut first = $first_half
+      mut second = ($second_half | default "")
 
-      if test (count $argv) -lt 2
-        set -l short_id (string sub -s 1 -l 8 -- $first_half)
-        set first_half (string sub -s 1 -l 4 -- $short_id)
-        set second_half (string sub -s 5 -l 4 -- $short_id)
-      end
+      if $second_half == null {
+        let short_id = ($first_half | str substring 0..<8)
+        $first = ($short_id | str substring 0..<4)
+        $second = ($short_id | str substring 4..<8)
+      }
 
-      set_color brred
-      echo -n $first_half
+      print --no-newline (ansi light_red)
+      print --no-newline $first
 
-      if test -n "$second_half"
-        set_color bryellow
-        echo -n $second_half
-      end
+      if ($second | is-not-empty) {
+        print --no-newline (ansi light_yellow)
+        print --no-newline $second
+      }
 
-      set_color normal
-    end
+      print --no-newline (ansi reset)
+    }
   '';
 in
 {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableNushellIntegration = true;
     enableTransience = true;
     extraPackages = with pkgs; [
       git
@@ -101,138 +103,147 @@ in
 
       custom = {
         jj = {
-          shell = starshipFishShell;
-          when = "jj root --ignore-working-copy >/dev/null 2>&1";
+          shell = starshipNushellShell;
+          when = "jj root --ignore-working-copy out> /dev/null err> /dev/null";
           format = "$output";
           unsafe_no_escape = true;
           command = ''
             ${colorizeShortId}
 
-            set -l metadata (
-              command jj log \
-                -r @ \
-                --ignore-working-copy \
-                --no-pager \
-                --no-graph \
-                -T 'if(bookmarks, bookmarks, "-") ++ "\t" ++ change_id.shortest(8).prefix() ++ "\t" ++ change_id.shortest(8).rest() ++ "\t" ++ if(empty, "1", "0") ++ "\t" ++ if(conflict, "1", "0") ++ "\t" ++ if(description.first_line(), description.first_line(), "-")' \
-                2>/dev/null | string trim
+            let metadata = (
+              jj log
+                -r @
+                --ignore-working-copy
+                --no-pager
+                --no-graph
+                -T 'if(bookmarks, bookmarks, "-") ++ "\t" ++ change_id.shortest(8).prefix() ++ "\t" ++ change_id.shortest(8).rest() ++ "\t" ++ if(empty, "1", "0") ++ "\t" ++ if(conflict, "1", "0") ++ "\t" ++ if(description.first_line(), description.first_line(), "-")'
+                err> /dev/null
+              | str trim
             )
 
-            test -n "$metadata"; or exit 1
+            if ($metadata | is-empty) {
+              exit 1
+            }
 
-            set -l fields (string split \t -- $metadata)
-            set -l bookmarks $fields[1]
-            set -l short_id_prefix $fields[2]
-            set -l short_id_rest $fields[3]
-            set -l is_empty $fields[4]
-            set -l has_conflict $fields[5]
-            set -l summary $fields[6]
+            let fields = ($metadata | split row "\t")
+            let bookmarks = ($fields | get 0)
+            let short_id_prefix = ($fields | get 1)
+            let short_id_rest = ($fields | get 2)
+            let is_empty = ($fields | get 3)
+            let has_conflict = ($fields | get 4)
+            let summary = ($fields | get 5)
 
-            set_color --bold brmagenta
-            echo -n " jj"
+            print --no-newline (ansi light_magenta_bold)
+            print --no-newline " jj"
 
-            set_color brblack
-            echo -n ":"
+            print --no-newline (ansi dark_gray)
+            print --no-newline ":"
 
-            if test "$bookmarks" != "-"
-              set_color --bold brgreen
-              echo -n $bookmarks
+            if $bookmarks != "-" {
+              print --no-newline (ansi light_green_bold)
+              print --no-newline $bookmarks
 
-              set_color white
-              echo -n "@"
-            end
+              print --no-newline (ansi white)
+              print --no-newline "@"
+            }
 
-            __starship_colorize_short_id $short_id_prefix "$short_id_rest"
+            __starship_colorize_short_id $short_id_prefix $short_id_rest
 
-            if test "$is_empty" = "1"
-              set_color yellow
-              echo -n " empty"
-            end
+            if $is_empty == "1" {
+              print --no-newline (ansi yellow)
+              print --no-newline " empty"
+            }
 
-            if test "$has_conflict" = "1"
-              set_color brred
-              echo -n " conflict"
-            end
+            if $has_conflict == "1" {
+              print --no-newline (ansi light_red)
+              print --no-newline " conflict"
+            }
 
-            set_color brblack
-            if test "$summary" != "-"
-              echo -n " " (string sub -s 1 -l 28 -- $summary)
-            else
-              echo -n " no-desc"
-            end
+            print --no-newline (ansi dark_gray)
+            if $summary != "-" {
+              print --no-newline " "
+              print --no-newline ($summary | str substring 0..<28)
+            } else {
+              print --no-newline " no-desc"
+            }
 
-            set_color normal
+            print --no-newline (ansi reset)
           '';
         };
 
         git = {
-          shell = starshipFishShell;
-          when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1";
+          shell = starshipNushellShell;
+          when = "git rev-parse --is-inside-work-tree out> /dev/null err> /dev/null";
           format = "$output";
           unsafe_no_escape = true;
           command = ''
-            command jj root --ignore-working-copy >/dev/null 2>&1; and exit 1
+            let jj_root = (jj root --ignore-working-copy | complete)
+            if $jj_root.exit_code == 0 {
+              exit 1
+            }
 
             ${colorizeShortId}
 
-            set -l ref (command git symbolic-ref --quiet --short HEAD 2>/dev/null)
-            set -l detached 0
-            if test -z "$ref"
-              set detached 1
-              set ref (command git rev-parse --short HEAD 2>/dev/null)
-            end
+            let ref_result = (git symbolic-ref --quiet --short HEAD | complete)
+            mut ref = ($ref_result.stdout | str trim)
+            mut detached = false
 
-            set -l staged 0
-            set -l unstaged 0
-            set -l untracked 0
+            if ($ref | is-empty) {
+              $detached = true
+              $ref = (git rev-parse --short HEAD err> /dev/null | str trim)
+            }
 
-            for line in (command git status --porcelain --ignore-submodules=dirty 2>/dev/null)
-              set -l index_state (string sub -s 1 -l 1 -- $line)
-              set -l worktree_state (string sub -s 2 -l 1 -- $line)
+            mut staged = 0
+            mut unstaged = 0
+            mut untracked = 0
 
-              if test "$index_state" = "?"
-                set untracked (math $untracked + 1)
+            for line in (git status --porcelain --ignore-submodules=dirty err> /dev/null | lines) {
+              let index_state = ($line | str substring 0..<1)
+              let worktree_state = ($line | str substring 1..<2)
+
+              if $index_state == "?" {
+                $untracked = ($untracked + 1)
                 continue
-              end
+              }
 
-              if test "$index_state" != " "
-                set staged (math $staged + 1)
-              end
+              if $index_state != " " {
+                $staged = ($staged + 1)
+              }
 
-              if test "$worktree_state" != " "
-                set unstaged (math $unstaged + 1)
-              end
-            end
+              if $worktree_state != " " {
+                $unstaged = ($unstaged + 1)
+              }
+            }
 
-            set_color --bold brblue
-            echo -n " git"
+            print --no-newline (ansi light_blue_bold)
+            print --no-newline " git"
 
-            set_color brblack
-            echo -n ":"
+            print --no-newline (ansi dark_gray)
+            print --no-newline ":"
 
-            if test "$detached" = "1"
+            if $detached {
               __starship_colorize_short_id $ref
-            else
-              set_color --bold green
-              echo -n $ref
-            end
+            } else {
+              print --no-newline (ansi green_bold)
+              print --no-newline $ref
+            }
 
-            if test $staged -gt 0
-              set_color brgreen
-              echo -n " +$staged"
-            end
+            if $staged > 0 {
+              print --no-newline (ansi light_green)
+              print --no-newline $" +($staged)"
+            }
 
-            if test $unstaged -gt 0
-              set_color yellow
-              echo -n " ~$unstaged"
-            end
+            if $unstaged > 0 {
+              print --no-newline (ansi yellow)
+              print --no-newline $" ~($unstaged)"
+            }
 
-            if test $untracked -gt 0
-              set_color brred
-              echo -n " ?$untracked"
-            end
+            if $untracked > 0 {
+              print --no-newline (ansi light_red)
+              print --no-newline $" ?($untracked)"
+            }
 
-            set_color normal
+            print --no-newline (ansi reset)
           '';
         };
       };

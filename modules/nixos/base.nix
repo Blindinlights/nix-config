@@ -21,6 +21,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
   security.sudo.wheelNeedsPassword = false;
+  environment.shells = [ pkgs.nushell ];
   programs.fish.enable = true;
   programs.nh = {
     enable = true;
