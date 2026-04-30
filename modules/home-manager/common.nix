@@ -19,7 +19,7 @@ in
     enable = true;
     nix-direnv.enable = true;
   };
-
+  home.shell.enableNushellIntegration = true;
   home.packages = with pkgs; [
     tree
     lsd

@@ -53,6 +53,11 @@
       gh = "github";
     };
 
+    extraEnv = ''
+      $env.EDITOR = "hx"
+      $env.VISUAL = "hx"
+    '';
+
     extraConfig = ''
       def mkcd [dir: path] {
         mkdir $dir
