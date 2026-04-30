@@ -9,6 +9,26 @@ let
           "git"
         ];
       });
+  helixWithColorReset =
+    let
+      hxWrapper = pkgs.writeShellScriptBin "hx" ''
+        reset_terminal_background() {
+          status=$?
+          printf '\033]111\033\\'
+          exit "$status"
+        }
+
+        trap reset_terminal_background EXIT
+        ${helixSteel}/bin/hx "$@"
+      '';
+    in
+    pkgs.symlinkJoin {
+      name = "helix-with-color-reset";
+      paths = [ helixSteel ];
+      postBuild = ''
+        ln -sf ${hxWrapper}/bin/hx $out/bin/hx
+      '';
+    };
   infoKeybindings = {
     p = ":copy-current-path";
     P = ":copy-current-position";
@@ -43,7 +63,7 @@ in
 
   programs.helix = {
     enable = true;
-    package = helixSteel;
+    package = helixWithColorReset;
     defaultEditor = true;
     extraPackages = [
       pkgs.steel
@@ -79,11 +99,11 @@ in
           ];
           "q" = ":wq";
         };
-        "["={
-          "j"="jump_backward";
+        "[" = {
+          "j" = "jump_backward";
         };
-        "]"={
-          "j"="jump_backward";
+        "]" = {
+          "j" = "jump_backward";
         };
         "`" = ":selection-smart-case";
         "~" = ":selection-toggle-bool";

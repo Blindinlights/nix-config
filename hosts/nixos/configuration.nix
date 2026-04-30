@@ -38,6 +38,11 @@ in
     backupFileExtension = "backup";
   };
 
+  zramSwap={
+    enable = true;
+    memoryPercent = 50;
+  };
+
   networking.hostName = vars.host.name;
   networking.proxy = {
     default = vars.networking.proxy.default;

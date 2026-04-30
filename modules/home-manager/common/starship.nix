@@ -46,7 +46,7 @@ in
       command_timeout = 1000;
       scan_timeout = 10;
       format = "$directory\${custom.jj}\${custom.git}$line_break$character";
-      right_format = "$python$rust$nodejs";
+      right_format = "$nix_shell$ocaml$typst$python$rust$nodejs";
 
       directory = {
         format = "[$path]($style)";
@@ -66,22 +66,60 @@ in
         vimcmd_replace_one_symbol = "[>](bold cyan)";
       };
 
+      nix_shell = {
+        format = "[$symbol:$state(:$name)]($style) ";
+        style = "bold blue";
+        symbol = "󱄅";
+        impure_msg = "impure";
+        pure_msg = "pure";
+        unknown_msg = "unknown";
+      };
+
+      ocaml = {
+        format = "[$symbol(:$version)]($style) ";
+        style = "bold magenta";
+        symbol = "";
+        detect_extensions = [
+          "ml"
+          "mli"
+          "re"
+          "rei"
+        ];
+        detect_files = [
+          "dune"
+          "dune-project"
+          "jbuild"
+          ".merlin"
+        ];
+      };
+
+      typst = {
+        format = "[$symbol(:$version)]($style) ";
+        style = "bold cyan";
+        symbol = "";
+        detect_extensions = [ "typ" ];
+        detect_files = [
+          "typst.toml"
+          "Typst.toml"
+        ];
+      };
+
       python = {
         format = "[$symbol(:$version)]($style) ";
         style = "bold yellow";
-        symbol = "🐍";
+        symbol = " ";
       };
 
       rust = {
         format = "[$symbol(:$version)]($style) ";
         style = "bold red";
-        symbol = "🦀";
+        symbol = "";
       };
 
       nodejs = {
         format = "[$symbol(:$version)]($style) ";
         style = "bold green";
-        symbol = "⬢";
+        symbol = "";
         detect_extensions = [
           "js"
           "mjs"
