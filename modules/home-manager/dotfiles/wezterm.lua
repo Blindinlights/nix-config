@@ -50,6 +50,7 @@ config.font = wezterm.font_with_fallback {
   'Noto Color Emoji',
 }
 config.font_size = 15.0
+config.default_prog = { 'nu' }
 config.window_padding = {
   left = 3,
   right = 1,
@@ -62,6 +63,18 @@ config.keys = {
     key = 'w',
     mods = 'CTRL|SHIFT',
     action = act.CloseCurrentTab { confirm = false },
+  },
+}
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = act.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL|SHIFT',
+    action = act.OpenLinkAtMouseCursor,
   },
 }
 config.skip_close_confirmation_for_processes_named = {

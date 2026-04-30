@@ -1,17 +1,24 @@
-{lib, pkgs, ... }:
-let
-   modulesPath =./common;
-   moduleFiles =
-    lib.mapAttrsToList (name: value:
-      if value == "regular" && lib.hasSuffix ".nix" name
-      then  "${modulesPath}/${name}"
-      else null
-    ) (builtins.readDir modulesPath);
-in 
 {
-  imports = [
+  lib,
+  pkgs,
+  ...
+}:
+let
+  modulesPath = ./common;
+  moduleFiles = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then modulesPath + "/${name}" else null
+    ) (builtins.readDir modulesPath)
+  );
+in
+{
+  imports = moduleFiles;
 
-  ]++moduleFiles;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   home.packages = with pkgs; [
     tree
@@ -30,7 +37,6 @@ in
     stow
     chezmoi
     aria2
-    # direnv
     ast-grep
     just
     fzf

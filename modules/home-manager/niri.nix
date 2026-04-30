@@ -6,10 +6,14 @@
 }:
 let
   modulesPath = ./niri;
-  moduleFiles = lib.mapAttrsToList (
-    name: value:
-    if value == "regular" && lib.hasSuffix ".nix" name then "${modulesPath}/${name}" else null
-  ) (builtins.readDir modulesPath);
+  browserDesktop = "firefox-nightly.desktop";
+  fileManagerDesktop = "com.system76.CosmicFiles.desktop";
+  moduleFiles = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then "${modulesPath}/${name}" else null
+    ) (builtins.readDir modulesPath)
+  );
 
 in
 {
@@ -19,13 +23,10 @@ in
   ]
   ++ moduleFiles;
   home.packages = with pkgs; [
-    kdePackages.dolphin
     kdePackages.okular
+    xournalpp
     cosmic-files
     cosmic-term
-    swaylock
-    swayidle
-    # mako
     exfatprogs
     ntfs3g
     bibata-cursors
@@ -39,7 +40,7 @@ in
     name = "Bibata-Modern-Classic";
     size = 24;
     gtk.enable = true;
-    x11.enable = true;
+    x11.enable = false;
   };
   xdg.autostart.enable = true;
   xdg.portal = {
@@ -59,12 +60,13 @@ in
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = [ "google-chrome-unstable.desktop" ];
-      "x-scheme-handler/http" = [ "google-chrome-unstable.desktop" ];
-      "x-scheme-handler/https" = [ "google-chrome-unstable.desktop" ];
-      "x-scheme-handler/about" = [ "google-chrome-unstable.desktop" ];
-      "x-scheme-handler/unknown" = [ "google-chrome-unstable.desktop" ];
-      "application/xhtml+xml" = [ "google-chrome-unstable.desktop" ];
+      "text/html" = [ browserDesktop ];
+      "x-scheme-handler/http" = [ browserDesktop ];
+      "x-scheme-handler/https" = [ browserDesktop ];
+      "x-scheme-handler/about" = [ browserDesktop ];
+      "x-scheme-handler/unknown" = [ browserDesktop ];
+      "inode/directory" = [ fileManagerDesktop ];
+      "application/xhtml+xml" = [ browserDesktop ];
       "application/pdf" = [ "org.kde.okular.desktop" ];
       "image/jpeg" = [ "imv.desktop" ];
       "image/png" = [ "imv.desktop" ];
@@ -79,6 +81,11 @@ in
     };
     associations.removed = {
       "application/pdf" = [ "com.google.Chrome.desktop" ];
+      "inode/directory" = [
+        "nautilus.desktop"
+        "org.gnome.Nautilus.desktop"
+        "yazi.desktop"
+      ];
     };
   };
   home.file.".config/niri/config.kdl" = {
@@ -88,8 +95,8 @@ in
   services.darkman = {
     enable = true;
     settings = {
-      lat = vars.location.lat;
-      lng = vars.location.lng;
+      # lat = vars.location.lat;
+      # lng = vars.location.lng;
       usegeoclue = false;
     };
     darkModeScripts = {

@@ -26,7 +26,7 @@ in
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/pg.nix
     ../../modules/nixos/game.nix
-    
+
     inputs.silentSDDM.nixosModules.default
   ];
 
@@ -49,11 +49,10 @@ in
     options rtw89_pci disable_aspm_l1=y
     options rtw89_core disable_ps_mode=y
     options v4l2loopback video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1  '';
-  virtualisation.waydroid.enable = true;
   virtualisation.docker.enable = true;
   users.users.${userName} = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
     extraGroups = vars.user.groups;
   };
   networking.firewall = {
@@ -84,10 +83,18 @@ in
   boot.kernelModules = [ "v4l2loopback" ];
 
   programs.niri.enable = true;
-  # services.desktopManager.cosmic.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libcap
+    stdenv.cc.cc.lib
+    zlib
+    curl
+    openssl
+  ];
+
+  services.guix.enable = true;
 
   system.stateVersion = vars.stateVersion.system;
 }

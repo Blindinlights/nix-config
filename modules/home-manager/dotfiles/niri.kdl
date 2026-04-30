@@ -47,6 +47,8 @@ layout {
 }
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "thunderbird"
+spawn-at-startup "FlClash"
 environment {
     DISPLAY ":1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
@@ -93,7 +95,7 @@ binds {
         spawn "wezterm"
     }
     Mod+Z {
-        spawn "google-chrome-unstable"
+        spawn "firefox-nightly"
     }
     Super+Alt+L {
         spawn "swaylock"
@@ -458,4 +460,3 @@ layer-rule {
 debug {
     honor-xdg-activation-with-invalid-serial
 }
-

@@ -1,39 +1,42 @@
-{config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
 
-  imports = lib.mapAttrsToList (
-    name: value:
-    if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
-  ) (builtins.readDir ./desktop);
+  imports = lib.filter (path: path != null) (
+    lib.mapAttrsToList (
+      name: value:
+      if value == "regular" && lib.hasSuffix ".nix" name then ./. + "/desktop/${name}" else null
+    ) (builtins.readDir ./desktop)
+  );
 
   home.packages = with pkgs; [
     btop
     qq
     appimage-run
     flclash
-    # clash-verge-rev
     wl-clipboard
     imv
     vlc
-    wemeet
+    # wemeet
     ffmpeg
     obs-studio
     yt-dlp
     sniffnet
     thunderbird
-    # (cherry-studio.override { electron_38 = pkgs.electron_39; })
+    cherry-studio
     sillytavern
     ayugram-desktop
     libreoffice
-    # google-chrome
     tor-browser
-    # wechat
+    wechat
     papirus-icon-theme
-  ]++[
-    inputs.browser-previews.packages.${pkgs.stdenv.hostPlatform.system}.google-chrome-dev
+    google-chrome
   ];
-
-  programs.firefox.enable = true;
 
   i18n.inputMethod = {
     enable = true;
@@ -51,6 +54,7 @@
 
   gtk = {
     enable = true;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     gtk4.theme = config.gtk.theme;
     iconTheme = {
       package = pkgs.papirus-icon-theme;

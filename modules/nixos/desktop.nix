@@ -1,10 +1,13 @@
-{ inputs, pkgs, vars, ... }:
+{ pkgs, vars, ... }:
 {
 
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
+  services.flatpak.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
@@ -31,7 +34,6 @@
     NO_PROXY = vars.networking.proxy.env.noProxy;
   };
   environment.systemPackages = [
-    inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
     pkgs.catppuccin-sddm
     pkgs.pavucontrol
   ];
